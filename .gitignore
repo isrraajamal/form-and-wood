@@ -1,0 +1,16 @@
+# Archives & Backups
+*.zip
+*.tar.gz
+*.rar
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor files
+.vscode/
+.idea/
+
+# Local utility scripts
+*.ps1

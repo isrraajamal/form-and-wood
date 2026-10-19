@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Atelier Dark Charcoal Pebble Background with Soft Warm Border -->
+  <rect width="64" height="64" rx="16" fill="#141412"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="rgba(224, 152, 122, 0.28)" stroke-width="1.5"/>
+
+  <!-- Architectural 'F' Interlocking Wood Joinery Symbol -->
+  <g fill="#F4F1EA">
+    <!-- Vertical Timber Spine -->
+    <rect x="16" y="14" width="7" height="36" rx="2.5"/>
+    
+    <!-- Top Horizontal Beam with Mortise Cut Accent -->
+    <rect x="16" y="14" width="31" height="7" rx="2.5"/>
+    
+    <!-- Middle Architectural Beam with Terracotta Craft Inlay -->
+    <rect x="16" y="28" width="22" height="6.5" rx="2"/>
+  </g>
+
+  <!-- Signature Atelier Terracotta Mortise Inlay Dot -->
+  <circle cx="43" cy="31.25" r="3.25" fill="#E0987A"/>
+
+  <!-- Subtle Precision Grain Notch (4-pointed atelier star) -->
+  <path d="M47 17.5 L47.8 19.5 L49.8 20.3 L47.8 21.1 L47 23.1 L46.2 21.1 L44.2 20.3 L46.2 19.5 Z" fill="#E0987A"/>
+</svg>

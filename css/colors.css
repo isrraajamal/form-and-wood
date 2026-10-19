@@ -1,0 +1,120 @@
+/* ============================================
+   Color Palette for MIK Laboratory
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --primary-dark: #1e5a96;
+  --primary-main: #2b73b1;
+  --primary-light: #5b9fd8;
+  
+  /* Accent Colors */
+  --accent-cyan: #00bcd4;
+  --accent-teal: #00897b;
+  --accent-light: #4dd0e1;
+  --accent-red: #d32f2f;
+  --accent-red-light: #ef5350;
+  
+  /* Neutral Colors */
+  --neutral-white: #ffffff;
+  --neutral-light-gray: #f5f5f5;
+  --neutral-gray: #e0e0e0;
+  --neutral-dark-gray: #757575;
+  --neutral-darkest: #212121;
+  
+  /* Semantic Colors */
+  --success: #4caf50;
+  --warning: #ff9800;
+  --error: #f44336;
+  --info: #2196f3;
+  
+  /* Text Colors */
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-light: #ffffff;
+  --text-disabled: #bdbdbd;
+  
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e8f4f8;
+  
+  /* Shadow Depths */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  --shadow-xl: 0 15px 25px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.05);
+  
+  /* Border Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 50%;
+  
+  /* Spacing Unit (8px base) */
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --spacing-3: 24px;
+  --spacing-4: 32px;
+  --spacing-5: 40px;
+  --spacing-6: 48px;
+  
+  /* Typography */
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  
+  /* Font Sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  
+  /* Line Heights */
+  --line-tight: 1.2;
+  --line-normal: 1.5;
+  --line-relaxed: 1.75;
+}
+
+/* Utility Classes */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--accent-cyan);
+}
+
+.bg-primary-dark {
+  background-color: var(--primary-dark);
+}
+
+.bg-primary-main {
+  background-color: var(--primary-main);
+}
+
+.bg-accent {
+  background-color: var(--accent-cyan);
+}
+
+.bg-light {
+  background-color: var(--bg-secondary);
+}
+
+.border-primary {
+  border-color: var(--primary-dark);
+}
+
+.border-accent {
+  border-color: var(--accent-cyan);
+}
