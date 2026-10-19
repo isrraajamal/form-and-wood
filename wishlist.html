@@ -22,8 +22,8 @@
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=5.3">
-    <link rel="stylesheet" href="css/pages.css?v=1.0">
+    <link rel="stylesheet" href="css/style.css?v=6.0">
+    <link rel="stylesheet" href="css/pages.css?v=2.0">
 </head>
 
 <body>
@@ -59,7 +59,7 @@
                         <span class="bag-count wishlist-count-badge" id="wishlistCountBadge" style="background:#ffffff; color:var(--text-dark);">0</span>
                     </a>
 
-                    <button type="button" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+                    <a href="cart.html" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag" title="Shopping Bag" style="text-decoration:none;">
                         <span class="bag-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -70,7 +70,7 @@
                         </span>
                         <span class="bag-label">bag</span>
                         <span class="bag-count" id="cartCountBadge">0</span>
-                    </button>
+                    </a>
                     <a href="contact.html" class="nav-contact-pill">atelier visit</a>
                     <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
                         <span class="bar"></span>
@@ -98,6 +98,10 @@
                 <li><a href="wishlist.html" class="mobile-nav-link active">Saved Pieces</a></li>
             </ul>
         </div>
+        <div class="mobile-drawer-footer">
+            <p>handcrafted furniture &bull; bespoke commissions</p>
+            <a href="mailto:concierge@formandwood.com">concierge@formandwood.com</a>
+        </div>
     </div>
 
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -120,22 +124,21 @@
         </section>
 
         <!-- WISHLIST GRID SECTION -->
-        <section class="wishlist-page-section container">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; flex-wrap:wrap; gap:16px;">
-                <span id="wishlistTotalCountText" style="font-size:0.95rem; color:var(--text-muted);">0 pieces saved</span>
-                
-                <div style="display:flex; gap:12px;" id="wishlistActionsRow">
-                    <button type="button" id="copyCurationLinkBtn" class="filter-btn">
-                        &#128279; Share Curation Link
-                    </button>
-                    <button type="button" id="addAllWishlistToCartBtn" class="filter-btn active">
-                        Move All to Bag &rarr;
-                    </button>
+        <section class="wishlist-page-section">
+            <div class="container">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; flex-wrap:wrap; gap:16px;">
+                    <span id="wishlistTotalCountText" style="font-size:0.95rem; color:var(--text-muted);">0 pieces saved</span>
+                    
+                    <div style="display:flex; gap:12px;" id="wishlistActionsRow">
+                        <button type="button" id="addAllWishlistToCartBtn" class="filter-btn active">
+                            Move All to Bag &rarr;
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="shop-grid" id="wishlistGridContainer">
-                <!-- Dynamically populated -->
+                <div class="shop-grid" id="wishlistGridContainer">
+                    <!-- Dynamically populated -->
+                </div>
             </div>
         </section>
     </main>
@@ -279,22 +282,37 @@
                     $container.append(`
                         <article class="chair-card">
                             <div class="chair-card-image-wrap">
-                                <span class="chair-badge-pill">curation item</span>
+                                <span class="chair-badge-pill">curation specimen</span>
                                 <button type="button" class="chair-wishlist-btn active" data-product-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-img="${item.img}" title="Remove from wishlist">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                                     </svg>
                                 </button>
                                 <a href="product.html?id=${item.id}">
                                     <img src="${item.img}" alt="${item.name}" class="chair-card-image">
                                 </a>
+                                <div class="card-hover-actions">
+                                    <button type="button" class="btn-quick-view" data-product="${item.id}">quick view</button>
+                                </div>
                             </div>
-                            <div class="chair-card-body">
-                                <h3 class="chair-title"><a href="product.html?id=${item.id}" style="color:inherit; text-decoration:none;">${item.name}</a></h3>
-                                <div class="chair-footer-row">
-                                    <span class="chair-price">&euro;${item.price.toLocaleString()}</span>
-                                    <button type="button" class="add-to-bag-btn move-wishlist-item" data-index="${index}">
-                                        move to bag &rarr;
+                            <div class="chair-card-details">
+                                <div class="chair-title-row">
+                                    <h3 class="chair-name"><a href="product.html?id=${item.id}" style="color:inherit; text-decoration:none;">${item.name}</a></h3>
+                                    <span class="chair-price">&euro;${Number(item.price).toLocaleString()}</span>
+                                </div>
+                                <span class="chair-specs">heirloom timber &bull; handcrafted atelier</span>
+
+                                <div class="card-swatches">
+                                    <span class="c-swatch active" style="background:#557c55;" title="Sage Bouclé"></span>
+                                    <span class="c-swatch" style="background:#8c7853;" title="Oat Taupe"></span>
+                                    <span class="c-swatch" style="background:#2d302d;" title="Charcoal"></span>
+                                </div>
+
+                                <div class="chair-footer-action">
+                                    <button type="button" class="chair-action-pill add-to-bag-btn move-wishlist-item" data-index="${index}" data-product-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-img="${item.img}">
+                                        <span>add to bag</span>
+                                        <span class="action-arrow">&rarr;</span>
                                     </button>
                                 </div>
                             </div>
@@ -308,50 +326,107 @@
             // Move single item from wishlist to cart
             $(document).on('click', '.move-wishlist-item', function() {
                 const idx = $(this).data('index');
-                let savedWishlist = JSON.parse(localStorage.getItem('fw_wishlist') || '[]');
+                let savedWishlist = [];
+                try {
+                    savedWishlist = JSON.parse(localStorage.getItem('fw_wishlist') || '[]');
+                } catch(e) {
+                    savedWishlist = [];
+                }
+
                 const item = savedWishlist[idx];
                 if (item) {
-                    addToCart({
-                        id: item.id,
-                        name: item.name,
-                        price: item.price,
-                        img: item.img,
-                        quantity: 1
-                    });
-                    savedWishlist.splice(idx, 1);
-                    localStorage.setItem('fw_wishlist', JSON.stringify(savedWishlist));
-                    renderWishlistPage();
-                    if (typeof updateWishlistUI === 'function') updateWishlistUI();
-                }
-            });
+                    let currentCart = [];
+                    try {
+                        currentCart = JSON.parse(localStorage.getItem('fw_cart') || '[]');
+                    } catch(e) {
+                        currentCart = [];
+                    }
 
-            // Move all items to cart
-            $('#addAllWishlistToCartBtn').on('click', function() {
-                let savedWishlist = JSON.parse(localStorage.getItem('fw_wishlist') || '[]');
-                if (savedWishlist.length) {
-                    savedWishlist.forEach(item => {
-                        addToCart({
+                    const price = parseInt(item.price, 10) || 0;
+                    const existing = currentCart.find(c => c.id === item.id);
+                    if (existing) {
+                        existing.quantity = (existing.quantity || 1) + 1;
+                    } else {
+                        currentCart.push({
                             id: item.id,
                             name: item.name,
-                            price: item.price,
+                            price: price,
                             img: item.img,
                             quantity: 1
                         });
-                    });
-                    localStorage.setItem('fw_wishlist', JSON.stringify([]));
-                    renderWishlistPage();
+                    }
+
+                    localStorage.setItem('fw_cart', JSON.stringify(currentCart));
+                    savedWishlist.splice(idx, 1);
+                    localStorage.setItem('fw_wishlist', JSON.stringify(savedWishlist));
+
+                    if (typeof updateCartUI === 'function') updateCartUI();
                     if (typeof updateWishlistUI === 'function') updateWishlistUI();
-                    showToast('All saved pieces moved to your atelier bag');
+
+                    renderWishlistPage();
+
+                    const toastMsg = `Added "${item.name}" to your atelier bag`;
+                    if (typeof showToast === 'function') {
+                        showToast(toastMsg);
+                    }
                 }
             });
 
-            // Share Curation Link
-            $('#copyCurationLinkBtn').on('click', function() {
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(window.location.href);
-                    showToast('Curation link copied to clipboard');
-                } else {
-                    alert('Share this link: ' + window.location.href);
+            // Move all items from wishlist to cart
+            $('#addAllWishlistToCartBtn').on('click', function() {
+                let savedWishlist = [];
+                try {
+                    savedWishlist = JSON.parse(localStorage.getItem('fw_wishlist') || '[]');
+                } catch(e) {
+                    savedWishlist = [];
+                }
+
+                if (!savedWishlist || !savedWishlist.length) return;
+
+                const count = savedWishlist.length;
+
+                // Load existing cart
+                let currentCart = [];
+                try {
+                    currentCart = JSON.parse(localStorage.getItem('fw_cart') || '[]');
+                } catch(e) {
+                    currentCart = [];
+                }
+
+                // Add all wishlist items into cart
+                savedWishlist.forEach(item => {
+                    const price = parseInt(item.price, 10) || 0;
+                    const existing = currentCart.find(c => c.id === item.id);
+                    if (existing) {
+                        existing.quantity = (existing.quantity || 1) + 1;
+                    } else {
+                        currentCart.push({
+                            id: item.id,
+                            name: item.name,
+                            price: price,
+                            img: item.img,
+                            quantity: 1
+                        });
+                    }
+                });
+
+                // Persist updated cart and clear wishlist
+                localStorage.setItem('fw_cart', JSON.stringify(currentCart));
+                localStorage.setItem('fw_wishlist', JSON.stringify([]));
+
+                // Synchronize global badges
+                if (typeof updateCartUI === 'function') updateCartUI();
+                if (typeof updateWishlistUI === 'function') updateWishlistUI();
+
+                // Re-render wishlist page to show empty state
+                renderWishlistPage();
+
+                // Toast confirmation
+                const msg = count === 1 
+                    ? 'Saved piece moved to your atelier bag' 
+                    : `All ${count} saved pieces moved to your atelier bag`;
+                if (typeof showToast === 'function') {
+                    showToast(msg);
                 }
             });
         });

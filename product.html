@@ -23,8 +23,8 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style.css?v=5.3">
-    <link rel="stylesheet" href="css/pages.css?v=1.0">
+    <link rel="stylesheet" href="css/style.css?v=6.0">
+    <link rel="stylesheet" href="css/pages.css?v=2.0">
 </head>
 
 <body>
@@ -60,7 +60,7 @@
                         <span class="bag-count wishlist-count-badge" id="wishlistCountBadge">0</span>
                     </a>
 
-                    <button type="button" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+                    <a href="cart.html" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag" title="Shopping Bag" style="text-decoration:none;">
                         <span class="bag-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -71,7 +71,7 @@
                         </span>
                         <span class="bag-label">bag</span>
                         <span class="bag-count" id="cartCountBadge">0</span>
-                    </button>
+                    </a>
                     <a href="contact.html" class="nav-contact-pill">atelier visit</a>
                     <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
                         <span class="bar"></span>
@@ -99,24 +99,33 @@
                 <li><a href="wishlist.html" class="mobile-nav-link">Saved Pieces</a></li>
             </ul>
         </div>
+        <div class="mobile-drawer-footer">
+            <p>handcrafted furniture &bull; bespoke commissions</p>
+            <a href="mailto:concierge@formandwood.com">concierge@formandwood.com</a>
+        </div>
     </div>
 
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
 
     <!-- MAIN PRODUCT DETAIL -->
     <main>
-        <section class="container" style="padding-top: 32px;">
-            <nav class="breadcrumbs" aria-label="Breadcrumb">
-                <a href="index.html">Home</a>
-                <span class="sep">/</span>
-                <a href="shop.html">Collection</a>
-                <span class="sep">/</span>
-                <span class="current" id="productBreadcrumbTitle">Nordic Sculptural Bouclé Lounge</span>
-            </nav>
+        <!-- BREADCRUMBS -->
+        <section class="breadcrumbs-section">
+            <div class="container">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="sep">/</span>
+                    <a href="shop.html">Collection</a>
+                    <span class="sep">/</span>
+                    <span class="current" id="productBreadcrumbTitle">Nordic Sculptural Bouclé Lounge</span>
+                </nav>
+            </div>
         </section>
 
-        <section class="product-detail-section container">
-            <div class="product-detail-grid">
+        <!-- MAIN PRODUCT DETAIL -->
+        <section class="product-detail-section">
+            <div class="container">
+                <div class="product-detail-grid">
                 <!-- LEFT GALLERY -->
                 <div class="product-gallery-sticky">
                     <div class="product-main-viewer" id="productMainViewer">
@@ -257,7 +266,7 @@
                     <!-- Accordion Specifications -->
                     <div class="product-accordions">
                         <div class="accordion-item active">
-                            <button type="button" class="accordion-header">
+                            <button type="button" class="accordion-header" aria-expanded="true">
                                 <span>Architectural Dimensions &amp; Blueprint</span>
                                 <span class="accordion-icon">+</span>
                             </button>
@@ -269,7 +278,7 @@
                         </div>
 
                         <div class="accordion-item">
-                            <button type="button" class="accordion-header">
+                            <button type="button" class="accordion-header" aria-expanded="false">
                                 <span>Joinery &amp; Sustainable Timber Philosophy</span>
                                 <span class="accordion-icon">+</span>
                             </button>
@@ -279,7 +288,7 @@
                         </div>
 
                         <div class="accordion-item">
-                            <button type="button" class="accordion-header">
+                            <button type="button" class="accordion-header" aria-expanded="false">
                                 <span>White-Glove Delivery &amp; Packaging</span>
                                 <span class="accordion-icon">+</span>
                             </button>
@@ -289,7 +298,7 @@
                         </div>
 
                         <div class="accordion-item">
-                            <button type="button" class="accordion-header">
+                            <button type="button" class="accordion-header" aria-expanded="false">
                                 <span>Lifetime Care &amp; Natural Oil Maintenance</span>
                                 <span class="accordion-icon">+</span>
                             </button>
@@ -301,81 +310,153 @@
 
                 </div>
             </div>
+            </div>
         </section>
 
         <!-- RELATED ATELIER PIECES -->
-        <section class="container" style="padding: 60px 0 100px;">
-            <div style="margin-bottom: 32px; display: flex; justify-content: space-between; align-items: flex-end;">
-                <div>
-                    <span class="page-eyebrow">Complementary Specimens</span>
-                    <h2 style="font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em;">Pair with Living Suite Pieces</h2>
-                </div>
-                <a href="shop.html" class="footer-link" style="font-weight: 700; color: var(--text-dark); text-decoration: none;">view full catalog &rarr;</a>
-            </div>
-
-            <div class="shop-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-                <!-- Companion 1 -->
-                <article class="chair-card" data-product-id="c2" data-name="Atelier Cane &amp; Cognac Armchair" data-price="790" data-img="assets/images/hero-card-custom.jpg">
-                    <div class="chair-card-image-wrap">
-                        <span class="chair-badge-pill">heritage craft</span>
-                        <a href="product.html?id=c2">
-                            <img src="assets/images/hero-card-custom.jpg" alt="Atelier Cane Armchair" class="chair-card-image">
-                        </a>
+        <section class="product-related-section">
+            <div class="container">
+                <div class="related-section-header">
+                    <div>
+                        <span class="page-eyebrow">Complementary Specimens</span>
+                        <h2 class="related-section-title">Pair with Living Suite Pieces</h2>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">82cm W &times; 80cm D</span>
-                            <span class="chair-wood">Solid Teak</span>
+                    <a href="shop.html" class="footer-link related-catalog-link">view full catalog &rarr;</a>
+                </div>
+
+                <div class="shop-grid">
+                <!-- Companion 1 -->
+                <article class="chair-card" data-category="cane" data-product-id="c2" data-name="Atelier Cane &amp; Cognac Armchair"
+                    data-price="790" data-img="assets/images/chair-decisions.jpg"
+                    data-material="woven cane webbing · cognac velvet">
+                    <div class="chair-card-image-wrap">
+                        <span class="chair-badge-pill">atelier craft</span>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="c2" data-name="Atelier Cane &amp; Cognac Armchair" data-price="790" data-img="assets/images/chair-decisions.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                            </svg>
+                        </button>
+                        <a href="product.html?id=c2">
+                            <img src="assets/images/chair-decisions.jpg" alt="Atelier Cane &amp; Cognac Armchair" class="chair-card-image">
+                        </a>
+                        <div class="card-hover-actions">
+                            <button type="button" class="btn-quick-view" data-product="c2">quick view</button>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=c2" style="color:inherit; text-decoration:none;">Atelier Cane &amp; Cognac Armchair</a></h3>
-                        <div class="chair-footer-row">
+                    </div>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=c2" style="color:inherit; text-decoration:none;">Atelier Cane &amp; Cognac Armchair</a></h3>
                             <span class="chair-price">&euro;790</span>
-                            <a href="product.html?id=c2" class="add-to-bag-btn" style="text-decoration:none;">view piece &rarr;</a>
+                        </div>
+                        <span class="chair-specs">woven cane webbing &bull; cognac velvet</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#a3592e;" title="Cognac"></span>
+                            <span class="c-swatch" style="background:#3d2f26;" title="Dark Walnut"></span>
+                            <span class="c-swatch" style="background:#c4b49d;" title="Natural Cane"></span>
+                        </div>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="c2"
+                                data-name="Atelier Cane &amp; Cognac Armchair" data-price="790"
+                                data-img="assets/images/chair-decisions.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Companion 2 -->
-                <article class="chair-card" data-product-id="credenza" data-name="Atelier Smoked Ash Lowboard Credenza" data-price="1450" data-img="assets/images/dept_credenza.jpg">
+                <article class="chair-card" data-category="storage" data-product-id="credenza" data-name="Atelier Smoked Ash Credenza"
+                    data-price="1450" data-img="assets/images/dept_credenza.jpg"
+                    data-material="solid smoked ash · brass sliding panels">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">case goods</span>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="credenza" data-name="Atelier Smoked Ash Credenza" data-price="1450" data-img="assets/images/dept_credenza.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                            </svg>
+                        </button>
                         <a href="product.html?id=credenza">
-                            <img src="assets/images/dept_credenza.jpg" alt="Atelier Credenza" class="chair-card-image">
+                            <img src="assets/images/dept_credenza.jpg" alt="Atelier Smoked Ash Credenza" class="chair-card-image">
                         </a>
-                    </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">180cm W &times; 58cm H</span>
-                            <span class="chair-wood">Smoked Ash</span>
+                        <div class="card-hover-actions">
+                            <button type="button" class="btn-quick-view" data-product="credenza">quick view</button>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=credenza" style="color:inherit; text-decoration:none;">Atelier Smoked Ash Credenza</a></h3>
-                        <div class="chair-footer-row">
+                    </div>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=credenza" style="color:inherit; text-decoration:none;">Atelier Smoked Ash Credenza</a></h3>
                             <span class="chair-price">&euro;1,450</span>
-                            <a href="product.html?id=credenza" class="add-to-bag-btn" style="text-decoration:none;">view piece &rarr;</a>
+                        </div>
+                        <span class="chair-specs">solid smoked ash &bull; brass sliding panels</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#423932;" title="Smoked Ash"></span>
+                            <span class="c-swatch" style="background:#c49d48;" title="Brushed Brass"></span>
+                            <span class="c-swatch" style="background:#282320;" title="Deep Walnut"></span>
+                        </div>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="credenza"
+                                data-name="Atelier Smoked Ash Credenza" data-price="1450"
+                                data-img="assets/images/dept_credenza.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Companion 3 -->
-                <article class="chair-card" data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant" data-price="340" data-img="assets/images/dept_lighting_objects.jpg">
+                <article class="chair-card" data-category="lighting" data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant"
+                    data-price="340" data-img="assets/images/dept_lighting_objects.jpg"
+                    data-material="raw terracotta · braided wheat cord">
                     <div class="chair-card-image-wrap">
-                        <span class="chair-badge-pill">ceramic drop</span>
+                        <span class="chair-badge-pill">ceramic studio</span>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant" data-price="340" data-img="assets/images/dept_lighting_objects.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                            </svg>
+                        </button>
                         <a href="product.html?id=lighting">
-                            <img src="assets/images/dept_lighting_objects.jpg" alt="Terracotta Pendant" class="chair-card-image">
+                            <img src="assets/images/dept_lighting_objects.jpg" alt="Hand-Turned Terracotta Pendant" class="chair-card-image">
                         </a>
-                    </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">32cm Diam</span>
-                            <span class="chair-wood">Raw Clay</span>
+                        <div class="card-hover-actions">
+                            <button type="button" class="btn-quick-view" data-product="lighting">quick view</button>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=lighting" style="color:inherit; text-decoration:none;">Hand-Turned Terracotta Pendant</a></h3>
-                        <div class="chair-footer-row">
+                    </div>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=lighting" style="color:inherit; text-decoration:none;">Hand-Turned Terracotta Pendant</a></h3>
                             <span class="chair-price">&euro;340</span>
-                            <a href="product.html?id=lighting" class="add-to-bag-btn" style="text-decoration:none;">view piece &rarr;</a>
+                        </div>
+                        <span class="chair-specs">raw terracotta &bull; braided wheat cord</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#b5613c;" title="Raw Terracotta"></span>
+                            <span class="c-swatch" style="background:#d99564;" title="Sand Blush"></span>
+                            <span class="c-swatch" style="background:#634b3e;" title="Kiln Earth"></span>
+                        </div>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="lighting"
+                                data-name="Hand-Turned Terracotta Pendant" data-price="340"
+                                data-img="assets/images/dept_lighting_objects.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
+                </div>
             </div>
         </section>
     </main>
@@ -597,10 +678,25 @@
                 addToCart(cartItem);
             });
 
-            // Accordion Toggle
+            // Accordion Toggle (allow only one open at a time)
             $('.accordion-header').on('click', function() {
                 const $item = $(this).closest('.accordion-item');
-                $item.toggleClass('active');
+                const isActive = $item.hasClass('active');
+
+                // Close all other items in this accordion group
+                $item.siblings('.accordion-item')
+                    .removeClass('active')
+                    .find('.accordion-header')
+                    .attr('aria-expanded', 'false');
+
+                // Toggle the clicked item
+                if (isActive) {
+                    $item.removeClass('active');
+                    $(this).attr('aria-expanded', 'false');
+                } else {
+                    $item.addClass('active');
+                    $(this).attr('aria-expanded', 'true');
+                }
             });
         });
     </script>

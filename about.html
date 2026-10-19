@@ -24,8 +24,8 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style.css?v=5.3">
-    <link rel="stylesheet" href="css/pages.css?v=1.0">
+    <link rel="stylesheet" href="css/style.css?v=6.0">
+    <link rel="stylesheet" href="css/pages.css?v=2.0">
 </head>
 
 <body>
@@ -61,7 +61,7 @@
                         <span class="bag-count wishlist-count-badge" id="wishlistCountBadge">0</span>
                     </a>
 
-                    <button type="button" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+                    <a href="cart.html" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag" title="Shopping Bag" style="text-decoration:none;">
                         <span class="bag-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +72,7 @@
                         </span>
                         <span class="bag-label">bag</span>
                         <span class="bag-count" id="cartCountBadge">0</span>
-                    </button>
+                    </a>
                     <a href="contact.html" class="nav-contact-pill">atelier visit</a>
                     <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
                         <span class="bar"></span>
@@ -100,6 +100,10 @@
                 <li><a href="wishlist.html" class="mobile-nav-link">Saved Pieces</a></li>
             </ul>
         </div>
+        <div class="mobile-drawer-footer">
+            <p>handcrafted furniture &bull; bespoke commissions</p>
+            <a href="mailto:concierge@formandwood.com">concierge@formandwood.com</a>
+        </div>
     </div>
 
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -123,8 +127,9 @@
         </section>
 
         <!-- MANIFESTO & 4 PILLARS -->
-        <section class="about-manifesto-section container">
-            <p class="manifesto-lead">
+        <section class="about-manifesto-section">
+            <div class="container">
+                <p class="manifesto-lead">
                 &ldquo;We design not for the transient novelty of seasons, but for the <em>weight of permanence</em> &mdash; creating chairs that mature with age, gathering the warm patina of human lives and quiet morning rituals.&rdquo;
             </p>
 
@@ -236,29 +241,95 @@
                 </div>
             </div>
 
-            <!-- SUSTAINABILITY MANIFESTO BANNER -->
-            <div class="swatch-promo-banner" style="background: #1a1e1b; margin-top: 80px;">
-                <div class="swatch-promo-content">
-                    <span class="page-eyebrow" style="color: var(--accent-sage);">The Lifetime Guarantee</span>
-                    <h3>Our Circular Restoration Pledge</h3>
-                    <p>
-                        Every FORM &amp; WOOD piece is designed to be disassembled, repaired, and restored. If your woven cane weakens after twenty years or your upholstery seeks a new color palette, our Copenhagen atelier provides lifetime restoration services.
-                    </p>
-                    <a href="shop.html" class="btn-swatch-order">
-                        <span>explore our armchair catalog</span>
-                        <span>&rarr;</span>
-                    </a>
-                </div>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div style="background: rgba(255,255,255,0.06); padding: 18px 24px; border-radius: var(--radius-md); border-left: 3px solid var(--accent-sage);">
-                        <strong style="display:block; margin-bottom: 4px; font-size: 1.05rem;">3:1 Forest Replanting</strong>
-                        <span style="color: var(--text-light-muted); font-size: 0.875rem;">For every tree harvested for our joinery, three saplings are planted in protected Danish nature reserves.</span>
+            <!-- SUSTAINABILITY & CIRCULAR RESTORATION PLEDGE -->
+            <div class="pledge-editorial-section" id="sustainability">
+                <div class="pledge-inner-card">
+                    <!-- Top Archival Kicker Bar -->
+                    <div class="pledge-card-header">
+                        <div class="pledge-kicker-wrap">
+                            <span class="badge-dot" aria-hidden="true"></span>
+                            <span class="pledge-section-kicker">[ 04 &mdash; circular stewardship &amp; guarantee ]</span>
+                        </div>
+                        <div class="pledge-registry-tag">
+                            <span>Copenhagen Registry &bull; Lifetime Care</span>
+                        </div>
                     </div>
-                    <div style="background: rgba(255,255,255,0.06); padding: 18px 24px; border-radius: var(--radius-md); border-left: 3px solid var(--accent-terracotta);">
-                        <strong style="display:block; margin-bottom: 4px; font-size: 1.05rem;">Zero Plastic Packaging</strong>
-                        <span style="color: var(--text-light-muted); font-size: 0.875rem;">Shipped exclusively in heavy unbleached honeycomb cardboard crates with organic wool padding.</span>
+
+                    <div class="pledge-grid">
+                        <!-- Left Narrative Column -->
+                        <div class="pledge-narrative-col">
+                            <h2 class="pledge-editorial-title">
+                                Our Circular<br>
+                                <em>Restoration Pledge.</em>
+                            </h2>
+                            <div class="pledge-stripes" aria-hidden="true">
+                                ///////////////////////////////////////////////////
+                            </div>
+                            <p class="pledge-lead-text">
+                                Every FORM &amp; WOOD piece is designed to be disassembled, repaired, and restored. If your woven cane weakens after twenty years or your upholstery seeks a new color palette, our Copenhagen atelier provides comprehensive lifetime restoration services.
+                            </p>
+                            <div class="pledge-perks-list">
+                                <div class="pledge-perk-row">
+                                    <span class="perk-check">&check;</span>
+                                    <span>Lifetime structural mortise &amp; tenon joinery warranty</span>
+                                </div>
+                                <div class="pledge-perk-row">
+                                    <span class="perk-check">&check;</span>
+                                    <span>Traditional 6-way French cane tensioning &amp; re-weaving</span>
+                                </div>
+                                <div class="pledge-perk-row">
+                                    <span class="perk-check">&check;</span>
+                                    <span>Zero landfill policy &mdash; 100% circular restoration &amp; non-toxic oils</span>
+                                </div>
+                            </div>
+
+                            <div class="pledge-action-row">
+                                <a href="shop.html" class="hero-pill-cta" style="text-decoration:none;">
+                                    <span>explore our armchair catalog</span>
+                                    <span class="cta-arrow">&rarr;</span>
+                                </a>
+                                <a href="contact.html?type=restoration" class="pledge-secondary-link">
+                                    <span>inquire about restoration</span>
+                                    <span>&nearr;</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Dual Curatorial Index Cards -->
+                        <div class="pledge-cards-col">
+                            <!-- Card 1: 3:1 Forest Replanting -->
+                            <div class="pledge-pillar-card">
+                                <div class="pledge-card-top">
+                                    <span class="pledge-card-number">01 // FORESTRY</span>
+                                    <span class="pledge-stat-pill">3:1 Ratio</span>
+                                </div>
+                                <h3 class="pledge-card-title">3:1 Forest Replanting</h3>
+                                <p class="pledge-card-desc">
+                                    For every tree harvested for our joinery, three saplings are planted in protected Danish nature reserves.
+                                </p>
+                                <div class="pledge-card-footer">
+                                    &bull; FSC-Certified European Ash &amp; Teak Registry
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Zero Plastic Packaging -->
+                            <div class="pledge-pillar-card">
+                                <div class="pledge-card-top">
+                                    <span class="pledge-card-number">02 // PACKAGING</span>
+                                    <span class="pledge-stat-pill">0% Plastic</span>
+                                </div>
+                                <h3 class="pledge-card-title">Zero Plastic Packaging</h3>
+                                <p class="pledge-card-desc">
+                                    Shipped exclusively in heavy unbleached honeycomb cardboard crates with organic wool padding.
+                                </p>
+                                <div class="pledge-card-footer">
+                                    &bull; 100% Compostable &bull; White-Glove Room Delivery
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>

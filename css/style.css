@@ -130,11 +130,14 @@ em {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .nav-left {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 .brand-logo {
@@ -142,13 +145,16 @@ em {
   flex-direction: column;
   text-decoration: none;
   color: var(--text-dark);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logo-main {
   font-size: 1.55rem;
   font-weight: 800;
   letter-spacing: -0.05em;
-  line-height: 1;
+  line-height: 1.05;
+  white-space: nowrap;
 }
 
 .logo-sub {
@@ -158,6 +164,7 @@ em {
   letter-spacing: 0.12em;
   color: var(--text-muted);
   margin-top: 2px;
+  white-space: nowrap;
 }
 
 .nav-center-links {
@@ -335,17 +342,20 @@ em {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(320px, 86vw);
+  width: min(340px, 86vw);
   height: 100%;
+  height: 100dvh;
   background: var(--bg-cream);
   z-index: 200;
   padding: 32px 28px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-drawer.open {
@@ -356,22 +366,40 @@ em {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(20, 20, 18, 0.08);
+  flex-shrink: 0;
 }
 
 .mobile-drawer-title {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.04em;
+  color: var(--text-dark);
 }
 
 .drawer-close-btn {
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: 1.85rem;
   line-height: 1;
   cursor: pointer;
   color: var(--text-dark);
+  padding: 4px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  color: var(--accent-terracotta);
+  transform: rotate(90deg);
+}
+
+.mobile-drawer-body {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 28px;
 }
 
 .mobile-nav-list {
@@ -379,6 +407,8 @@ em {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  margin: 0;
+  padding: 0;
 }
 
 .mobile-nav-link {
@@ -387,22 +417,38 @@ em {
   color: var(--text-dark);
   text-decoration: none;
   letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--accent-terracotta);
+  transform: translateX(4px);
 }
 
 .mobile-drawer-footer {
-  font-size: 0.76rem;
+  margin-top: auto;
+  font-size: 0.8rem;
   color: var(--text-muted);
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  border-top: 1px solid rgba(20, 20, 18, 0.1);
+  gap: 8px;
+  border-top: 1px solid rgba(20, 20, 18, 0.08);
   padding-top: 20px;
+  flex-shrink: 0;
 }
 
 .mobile-drawer-footer a {
   color: var(--text-dark);
   font-weight: 600;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobile-drawer-footer a:hover {
+  color: var(--accent-terracotta);
 }
 
 /* =========================================
@@ -1295,16 +1341,21 @@ em {
   text-decoration: none;
   color: var(--text-dark);
   transition: var(--transition);
-  cursor: grab;
-  user-select: none;
+  cursor: default;
+  user-select: auto;
   border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
+}
+
+.chairs-carousel .chair-card {
+  cursor: grab;
+  user-select: none;
 }
 
 .chair-card:hover {
   transform: translateY(-8px);
   background-color: #ebe7de;
-  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 .chair-card-image-wrap {
@@ -1335,10 +1386,13 @@ em {
   z-index: 2;
 }
 
-.chair-wishlist-btn {
+.chair-card-image-wrap .chair-wishlist-btn {
   position: absolute;
   top: 14px;
   right: 14px;
+}
+
+.chair-wishlist-btn {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -4636,6 +4690,38 @@ em {
 
 /* 2. Tablets (Landscape & Portrait <= 992px) */
 @media (max-width: 992px) {
+  /* Header: Show icon without text on small screens */
+  .nav-bag-btn .bag-label {
+    display: none !important;
+  }
+
+  .nav-bag-btn {
+    padding: 7px 11px;
+    gap: 7px;
+    height: 38px;
+    width: auto;
+    min-width: auto;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-bag-btn .bag-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-bag-btn .bag-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+    align-items: center;
+  }
 
   /* 1. Hero Section */
   .hero-section {
@@ -5166,26 +5252,155 @@ em {
   }
 }
 
-/* 4. Mobile Phones (<= 480px) */
-@media (max-width: 480px) {
-  /* Header */
+/* 4. Mobile Phones (<= 640px) - Header Architecture */
+@media (max-width: 640px) {
+  .header-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .navbar {
+    gap: 10px;
+  }
+
+  .nav-left {
+    flex-shrink: 0;
+    min-width: 0;
+  }
+
+  .brand-logo {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
   .brand-logo .logo-main {
-    font-size: 1.35rem;
+    font-size: clamp(1.15rem, 4.4vw, 1.35rem);
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    white-space: nowrap;
   }
 
   .brand-logo .logo-sub {
-    font-size: 0.58rem;
+    font-size: clamp(0.48rem, 1.8vw, 0.56rem);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    margin-top: 2px;
   }
 
+  .nav-actions {
+    gap: 8px;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  /* Compact icon pill without text */
   .nav-bag-btn {
-    padding: 6px 12px;
-    font-size: 0.74rem;
+    width: auto;
+    min-width: auto;
+    height: 36px;
+    padding: 6px 10px;
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(20, 20, 18, 0.12);
+    box-shadow: 0 1px 4px rgba(20, 20, 18, 0.04);
+    transition: all 0.2s ease;
+  }
+
+  .nav-bag-btn:hover,
+  .nav-bag-btn:active {
+    background: #ffffff;
+    border-color: var(--text-dark);
+    transform: scale(0.96);
+  }
+
+  .nav-bag-btn .bag-label {
+    display: none !important;
+  }
+
+  .nav-bag-btn .bag-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-bag-btn .bag-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .nav-bag-btn .bag-count {
+    position: static;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: 800;
+    line-height: 18px;
+    border: none;
+    box-shadow: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile-toggle {
     width: 36px;
     height: 36px;
-    padding: 8px;
+    border-radius: 50%;
+    padding: 9px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(20, 20, 18, 0.12);
+    box-shadow: 0 1px 4px rgba(20, 20, 18, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-toggle:hover,
+  .mobile-toggle:active {
+    background: #ffffff;
+    border-color: var(--text-dark);
+    transform: scale(0.96);
+  }
+}
+
+/* 4b. Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+  .brand-logo .logo-main {
+    font-size: clamp(1.12rem, 4.2vw, 1.28rem);
+  }
+
+  .brand-logo .logo-sub {
+    font-size: 0.52rem;
+  }
+
+  .nav-actions {
+    gap: 7px;
+  }
+
+  .nav-bag-btn {
+    padding: 5px 9px;
+    gap: 5px;
+    height: 35px;
+  }
+
+  .mobile-toggle {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+  }
+
+  .nav-bag-btn .bag-icon svg {
+    width: 15px;
+    height: 15px;
   }
 
   /* Hero Section */
@@ -5410,12 +5625,50 @@ em {
 
 /* 5. Extra Compact Screens (<= 360px) */
 @media (max-width: 360px) {
+  .header-container {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
   .hero-giant-word {
     font-size: 2rem;
   }
 
   .brand-logo .logo-main {
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+  }
+
+  .brand-logo .logo-sub {
+    font-size: 0.46rem;
+    letter-spacing: 0.06em;
+  }
+
+  .nav-actions {
+    gap: 5px;
+  }
+
+  .nav-bag-btn {
+    padding: 4px 7px;
+    gap: 4px;
+    height: 32px;
+  }
+
+  .mobile-toggle {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    padding: 7px;
+  }
+
+  .nav-bag-btn .bag-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .nav-bag-btn .bag-count {
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.58rem;
   }
 
   .hero-featured-image {

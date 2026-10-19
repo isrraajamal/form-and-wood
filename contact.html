@@ -24,8 +24,8 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style.css?v=5.3">
-    <link rel="stylesheet" href="css/pages.css?v=1.0">
+    <link rel="stylesheet" href="css/style.css?v=6.0">
+    <link rel="stylesheet" href="css/pages.css?v=2.0">
 </head>
 
 <body>
@@ -61,7 +61,7 @@
                         <span class="bag-count wishlist-count-badge" id="wishlistCountBadge">0</span>
                     </a>
 
-                    <button type="button" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+                    <a href="cart.html" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag" title="Shopping Bag" style="text-decoration:none;">
                         <span class="bag-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +72,7 @@
                         </span>
                         <span class="bag-label">bag</span>
                         <span class="bag-count" id="cartCountBadge">0</span>
-                    </button>
+                    </a>
                     <a href="contact.html" class="nav-contact-pill">atelier visit</a>
                     <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
                         <span class="bar"></span>
@@ -100,6 +100,10 @@
                 <li><a href="wishlist.html" class="mobile-nav-link">Saved Pieces</a></li>
             </ul>
         </div>
+        <div class="mobile-drawer-footer">
+            <p>handcrafted furniture &bull; bespoke commissions</p>
+            <a href="mailto:concierge@formandwood.com">concierge@formandwood.com</a>
+        </div>
     </div>
 
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -123,8 +127,9 @@
         </section>
 
         <!-- CONTACT GRID -->
-        <section class="container">
-            <div class="contact-layout-grid">
+        <section class="contact-main-section">
+            <div class="container">
+                <div class="contact-layout-grid">
                 <!-- LEFT INFO -->
                 <div class="contact-info-col">
                     <div class="concierge-card">
@@ -277,6 +282,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>

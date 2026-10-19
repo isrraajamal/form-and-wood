@@ -448,6 +448,10 @@ $(document).ready(function () {
   }
 
   function updateCartUI() {
+    try {
+      const savedCart = localStorage.getItem('fw_cart');
+      if (savedCart) cart = JSON.parse(savedCart);
+    } catch (e) {}
     saveCart();
     const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
@@ -501,8 +505,9 @@ $(document).ready(function () {
     }
     updateCartUI();
     showToast(`Added "${product.name}" to atelier bag`);
-    openCartDrawer();
   }
+  window.addToCart = addToCart;
+  window.updateCartUI = updateCartUI;
 
   function openCartDrawer() {
     $('#cartDrawer').addClass('open');
@@ -514,7 +519,7 @@ $(document).ready(function () {
     $('#drawerBackdrop').removeClass('active');
   }
 
-  $('#openCartBtn').on('click', openCartDrawer);
+  // Note: #openCartBtn is an anchor tag linking directly to cart.html across all pages.
   $('#closeCartBtn').on('click', closeCartDrawer);
 
   // Close cart drawer when clicking "explore chairs" empty state CTA
@@ -845,15 +850,22 @@ $(document).ready(function () {
   }
 
   function updateWishlistUI() {
+    try {
+      const savedWish = localStorage.getItem('fw_wishlist');
+      if (savedWish) wishlist = JSON.parse(savedWish);
+    } catch (e) {}
     const count = wishlist.length;
     $('#wishlistCountBadge, .wishlist-count-badge').text(count);
     $('.chair-wishlist-btn').each(function () {
       const pid = $(this).data('product-id') || $(this).closest('[data-product-id]').data('product-id');
       if (pid && wishlist.some(item => item.id === pid)) {
         $(this).addClass('active');
+      } else {
+        $(this).removeClass('active');
       }
     });
   }
+  window.updateWishlistUI = updateWishlistUI;
 
   updateWishlistUI();
 
@@ -921,6 +933,7 @@ $(document).ready(function () {
       });
     }, 3200);
   }
+  window.showToast = showToast;
 
   // ==========================================
   // 10. NEWSLETTER SUBMISSION

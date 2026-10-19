@@ -153,7 +153,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style.css?v=5.3">
+    <link rel="stylesheet" href="css/style.css?v=6.0">
 </head>
 
 <body>
@@ -189,7 +189,7 @@
                         <span class="bag-count wishlist-count-badge" id="wishlistCountBadge">0</span>
                     </a>
 
-                    <button type="button" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+                    <a href="cart.html" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag" title="Shopping Bag" style="text-decoration:none;">
                         <span class="bag-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -200,7 +200,7 @@
                         </span>
                         <span class="bag-label">bag</span>
                         <span class="bag-count" id="cartCountBadge">0</span>
-                    </button>
+                    </a>
                     <a href="contact.html" class="nav-contact-pill">atelier visit</a>
                     <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
                         <span class="bar"></span>
@@ -218,15 +218,17 @@
             <button type="button" class="drawer-close-btn" id="closeMobileMenuBtn"
                 aria-label="Close menu">&times;</button>
         </div>
-        <ul class="mobile-nav-list">
-            <li><a href="index.html" class="mobile-nav-link active">home</a></li>
-            <li><a href="shop.html" class="mobile-nav-link">the collection</a></li>
-            <li><a href="about.html" class="mobile-nav-link">atelier &amp; heritage</a></li>
-            <li><a href="#vintage" class="mobile-nav-link">lookbook</a></li>
-            <li><a href="contact.html" class="mobile-nav-link">appointments &amp; concierge</a></li>
-            <li><a href="cart.html" class="mobile-nav-link">full shopping bag</a></li>
-            <li><a href="wishlist.html" class="mobile-nav-link">saved pieces</a></li>
-        </ul>
+        <div class="mobile-drawer-body">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+                <li><a href="shop.html" class="mobile-nav-link">The Collection</a></li>
+                <li><a href="about.html" class="mobile-nav-link">Atelier &amp; Heritage</a></li>
+                <li><a href="#vintage" class="mobile-nav-link">Lookbook</a></li>
+                <li><a href="contact.html" class="mobile-nav-link">Appointments &amp; Concierge</a></li>
+                <li><a href="cart.html" class="mobile-nav-link">Full Shopping Bag</a></li>
+                <li><a href="wishlist.html" class="mobile-nav-link">Saved Pieces</a></li>
+            </ul>
+        </div>
         <div class="mobile-drawer-footer">
             <p>handcrafted furniture &bull; bespoke commissions</p>
             <a href="mailto:concierge@formandwood.com">concierge@formandwood.com</a>

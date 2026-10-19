@@ -24,8 +24,8 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/style.css?v=5.3">
-    <link rel="stylesheet" href="css/pages.css?v=1.0">
+    <link rel="stylesheet" href="css/style.css?v=6.0">
+    <link rel="stylesheet" href="css/pages.css?v=2.0">
 </head>
 
 <body>
@@ -61,7 +61,7 @@
                         <span class="bag-count wishlist-count-badge" id="wishlistCountBadge">0</span>
                     </a>
 
-                    <button type="button" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag">
+                    <a href="cart.html" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag" title="Shopping Bag" style="text-decoration:none;">
                         <span class="bag-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -72,7 +72,7 @@
                         </span>
                         <span class="bag-label">bag</span>
                         <span class="bag-count" id="cartCountBadge">0</span>
-                    </button>
+                    </a>
                     <a href="contact.html" class="nav-contact-pill">atelier visit</a>
                     <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
                         <span class="bar"></span>
@@ -100,6 +100,10 @@
                 <li><a href="wishlist.html" class="mobile-nav-link">Saved Pieces</a></li>
             </ul>
         </div>
+        <div class="mobile-drawer-footer">
+            <p>handcrafted furniture &bull; bespoke commissions</p>
+            <a href="mailto:concierge@formandwood.com">concierge@formandwood.com</a>
+        </div>
     </div>
 
     <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -123,9 +127,11 @@
         </section>
 
         <!-- SHOP TOOLBAR & GRID -->
-        <section class="container" style="padding-top: 20px;">
-            <div class="shop-toolbar">
-                <div class="shop-controls-grid">
+        <section class="shop-main-section">
+            <div class="container">
+                <div class="shop-toolbar">
+                <!-- Row 1: Category Filter Pills & Atelier Stock Status -->
+                <div class="shop-toolbar-primary">
                     <div class="filter-pills-group" id="categoryFilters">
                         <button type="button" class="filter-btn active" data-filter="all">All Pieces</button>
                         <button type="button" class="filter-btn" data-filter="lounge">Armchairs</button>
@@ -136,182 +142,256 @@
                         <button type="button" class="filter-btn" data-filter="limited">Limited Drops</button>
                     </div>
 
-                    <div class="shop-search-sort">
-                        <div class="search-input-wrap">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                            <input type="text" id="shopSearchInput" class="shop-search-input" placeholder="Search piece, material, wood...">
-                        </div>
-
-                        <select id="shopSortSelect" class="shop-sort-select" aria-label="Sort products">
-                            <option value="featured">Featured Drops</option>
-                            <option value="price-low">Price: Low to High</option>
-                            <option value="price-high">Price: High to Low</option>
-                        </select>
+                    <div class="shop-toolbar-status">
+                        <span class="badge-dot pulse-indicator"></span>
+                        <span>Batch #04 &bull; In Stock</span>
                     </div>
                 </div>
-            </div>
 
-            <div class="shop-results-bar">
-                <span id="resultsCount">Showing 8 of 8 atelier specimens</span>
-                <span style="font-size: 0.8125rem; letter-spacing: 0.05em; text-transform: uppercase;">Batch #04 In Stock</span>
+                <!-- Row 2: Spacious Search Bar (Left) + Live Count & Sort Dropdown (Right) -->
+                <div class="shop-toolbar-secondary">
+                    <div class="search-input-wrap">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="shopSearchInput" class="shop-search-input" placeholder="Search piece, material, wood finish...">
+                        <button type="button" class="search-clear-btn" id="searchClearBtn" aria-label="Clear search" style="display:none;">&times;</button>
+                    </div>
+
+                    <div class="shop-secondary-right">
+                        <span class="results-count-pill" id="resultsCount">Showing 8 of 8 atelier specimens</span>
+
+                        <div class="shop-sort-wrap">
+                            <span class="sort-prefix">Sort by</span>
+                            <div class="custom-select-wrap" id="shopSortCustomSelect">
+                                <button type="button" class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false" id="shopSortTrigger" aria-label="Sort atelier specimens">
+                                    <span class="custom-select-label">Featured Drops</span>
+                                    <svg class="custom-select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </button>
+                                <div class="custom-select-dropdown" role="listbox" aria-labelledby="shopSortTrigger" tabindex="-1">
+                                    <div class="custom-select-option selected" role="option" aria-selected="true" data-value="featured" tabindex="0">
+                                        <span>Featured Drops</span>
+                                        <svg class="custom-select-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="custom-select-option" role="option" aria-selected="false" data-value="price-low" tabindex="0">
+                                        <span>Price: Low to High</span>
+                                        <svg class="custom-select-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="custom-select-option" role="option" aria-selected="false" data-value="price-high" tabindex="0">
+                                        <span>Price: High to Low</span>
+                                        <svg class="custom-select-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <!-- Underlying native select kept for screen readers and event handling -->
+                                <select id="shopSortSelect" class="sr-only" aria-hidden="true" tabindex="-1">
+                                    <option value="featured" selected>Featured Drops</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- PRODUCT CARDS GRID -->
             <div class="shop-grid" id="shopProductsGrid">
                 <!-- Card 1 -->
-                <article class="chair-card" data-category="lounge" data-product-id="c1" data-name="Nordic Sculptural Bouclé Lounge" data-price="840" data-img="assets/images/hero-card-ready.jpg" data-material="Virgin Sage Bouclé · Solid European Ash">
+                <article class="chair-card" data-category="lounge" data-product-id="c1" data-name="Nordic Sculptural Bouclé Lounge"
+                    data-price="840" data-img="assets/images/chair-backup.jpg"
+                    data-material="sage green bouclé · monolithic frame">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">batch #04 drop</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="c1" data-name="Nordic Sculptural Bouclé Lounge" data-price="840" data-img="assets/images/hero-card-ready.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="c1" data-name="Nordic Sculptural Bouclé Lounge" data-price="840" data-img="assets/images/chair-backup.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=c1">
-                            <img src="assets/images/hero-card-ready.jpg" alt="Nordic Sculptural Bouclé Lounge" class="chair-card-image">
+                            <img src="assets/images/chair-backup.jpg" alt="Nordic Sculptural Bouclé Lounge armchair" class="chair-card-image">
                         </a>
                         <div class="card-hover-actions">
                             <button type="button" class="btn-quick-view" data-product="c1">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">88cm W &times; 82cm D &times; 76cm H</span>
-                            <span class="chair-wood">Solid Ash Frame</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=c1" style="color:inherit; text-decoration:none;">Nordic Sculptural Bouclé Lounge</a></h3>
+                            <span class="chair-price">&euro;840</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=c1" style="color:inherit; text-decoration:none;">Nordic Sculptural Bouclé Lounge</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #6b7a69;"></span>
-                            <span>Virgin Sage Bouclé · Solid European Ash</span>
+                        <span class="chair-specs">sage green bouclé &bull; monolithic frame</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#557c55;" title="Sage Bouclé"></span>
+                            <span class="c-swatch" style="background:#8c7853;" title="Oat Taupe"></span>
+                            <span class="c-swatch" style="background:#2d302d;" title="Charcoal"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;840</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="c1" data-name="Nordic Sculptural Bouclé Lounge" data-price="840" data-img="assets/images/hero-card-ready.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="c1"
+                                data-name="Nordic Sculptural Bouclé Lounge" data-price="840"
+                                data-img="assets/images/chair-backup.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Card 2 -->
-                <article class="chair-card" data-category="cane" data-product-id="c2" data-name="Atelier Cane &amp; Cognac Armchair" data-price="790" data-img="assets/images/hero-card-custom.jpg" data-material="Hand-Woven Natural Cane · Cognac Velvet">
+                <article class="chair-card" data-category="cane" data-product-id="c2" data-name="Atelier Cane & Cognac Armchair"
+                    data-price="790" data-img="assets/images/chair-decisions.jpg"
+                    data-material="woven cane webbing · cognac velvet">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">atelier craft</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="c2" data-name="Atelier Cane &amp; Cognac Armchair" data-price="790" data-img="assets/images/hero-card-custom.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="c2" data-name="Atelier Cane & Cognac Armchair" data-price="790" data-img="assets/images/chair-decisions.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=c2">
-                            <img src="assets/images/hero-card-custom.jpg" alt="Atelier Cane &amp; Cognac Armchair" class="chair-card-image">
+                            <img src="assets/images/chair-decisions.jpg" alt="Atelier Cane & Cognac Armchair armchair" class="chair-card-image">
                         </a>
                         <div class="card-hover-actions">
                             <button type="button" class="btn-quick-view" data-product="c2">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">82cm W &times; 80cm D &times; 78cm H</span>
-                            <span class="chair-wood">European Ash &amp; Cane</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=c2" style="color:inherit; text-decoration:none;">Atelier Cane &amp; Cognac Armchair</a></h3>
+                            <span class="chair-price">&euro;790</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=c2" style="color:inherit; text-decoration:none;">Atelier Cane &amp; Cognac Armchair</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #9c5c36;"></span>
-                            <span>Hand-Woven Natural Cane · Cognac Velvet</span>
+                        <span class="chair-specs">woven cane webbing &bull; cognac velvet</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#a3592e;" title="Cognac"></span>
+                            <span class="c-swatch" style="background:#3d2f26;" title="Dark Walnut"></span>
+                            <span class="c-swatch" style="background:#c4b49d;" title="Natural Cane"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;790</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="c2" data-name="Atelier Cane &amp; Cognac Armchair" data-price="790" data-img="assets/images/hero-card-custom.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="c2"
+                                data-name="Atelier Cane & Cognac Armchair" data-price="790"
+                                data-img="assets/images/chair-decisions.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Card 3 -->
-                <article class="chair-card" data-category="lounge" data-product-id="c3" data-name="Smoked Ash &amp; Mustard Club Chair" data-price="820" data-img="assets/images/chair-trust-issues.jpg" data-material="Mustard Cotton Velvet · Smoked Ash Framing">
+                <article class="chair-card" data-category="lounge" data-product-id="c3" data-name="Smoked Ash & Mustard Club Chair"
+                    data-price="820" data-img="assets/images/chair-trust-issues.jpg"
+                    data-material="ash wood structure · mustard cushion">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">studio icon</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="c3" data-name="Smoked Ash &amp; Mustard Club Chair" data-price="820" data-img="assets/images/chair-trust-issues.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="c3" data-name="Smoked Ash & Mustard Club Chair" data-price="820" data-img="assets/images/chair-trust-issues.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=c3">
-                            <img src="assets/images/chair-trust-issues.jpg" alt="Smoked Ash &amp; Mustard Club Chair" class="chair-card-image">
+                            <img src="assets/images/chair-trust-issues.jpg" alt="Smoked Ash & Mustard Club Chair" class="chair-card-image">
                         </a>
                         <div class="card-hover-actions">
                             <button type="button" class="btn-quick-view" data-product="c3">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">80cm W &times; 78cm D &times; 75cm H</span>
-                            <span class="chair-wood">Smoked Ash Frame</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=c3" style="color:inherit; text-decoration:none;">Smoked Ash &amp; Mustard Club Chair</a></h3>
+                            <span class="chair-price">&euro;820</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=c3" style="color:inherit; text-decoration:none;">Smoked Ash &amp; Mustard Club Chair</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #d19934;"></span>
-                            <span>Mustard Cotton Velvet · Smoked Ash</span>
+                        <span class="chair-specs">ash wood structure &bull; mustard cushion</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#c49942;" title="Mustard Velvet"></span>
+                            <span class="c-swatch" style="background:#707c74;" title="Nordic Sage"></span>
+                            <span class="c-swatch" style="background:#4a423a;" title="Smoked Ash"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;820</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="c3" data-name="Smoked Ash &amp; Mustard Club Chair" data-price="820" data-img="assets/images/chair-trust-issues.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="c3"
+                                data-name="Smoked Ash & Mustard Club Chair" data-price="820"
+                                data-img="assets/images/chair-trust-issues.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Card 4 -->
-                <article class="chair-card" data-category="lounge" data-product-id="c4" data-name="Minimalist Oak &amp; Linen Lounge" data-price="760" data-img="assets/images/chair-silent.jpg" data-material="Belgian Oatmeal Linen · Curved White Oak">
+                <article class="chair-card" data-category="lounge" data-product-id="c4" data-name="Minimalist Oak & Linen Lounge"
+                    data-price="760" data-img="assets/images/chair-silent.jpg"
+                    data-material="oatmeal textured linen · curved oak">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">minimalist</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="c4" data-name="Minimalist Oak &amp; Linen Lounge" data-price="760" data-img="assets/images/chair-silent.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="c4" data-name="Minimalist Oak & Linen Lounge" data-price="760" data-img="assets/images/chair-silent.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=c4">
-                            <img src="assets/images/chair-silent.jpg" alt="Minimalist Oak &amp; Linen Lounge" class="chair-card-image">
+                            <img src="assets/images/chair-silent.jpg" alt="Minimalist Oak & Linen Lounge" class="chair-card-image">
                         </a>
                         <div class="card-hover-actions">
                             <button type="button" class="btn-quick-view" data-product="c4">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">85cm W &times; 82cm D &times; 74cm H</span>
-                            <span class="chair-wood">Solid Oak Framing</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=c4" style="color:inherit; text-decoration:none;">Minimalist Oak &amp; Linen Lounge</a></h3>
+                            <span class="chair-price">&euro;760</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=c4" style="color:inherit; text-decoration:none;">Minimalist Oak &amp; Linen Lounge</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #d8d0c2;"></span>
-                            <span>Belgian Oatmeal Linen · Curved Oak</span>
+                        <span class="chair-specs">oatmeal textured linen &bull; curved oak</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#ded8c8;" title="Oatmeal Linen"></span>
+                            <span class="c-swatch" style="background:#948b7f;" title="Raw Clay"></span>
+                            <span class="c-swatch" style="background:#302e2a;" title="Ebonized Oak"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;760</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="c4" data-name="Minimalist Oak &amp; Linen Lounge" data-price="760" data-img="assets/images/chair-silent.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="c4"
+                                data-name="Minimalist Oak & Linen Lounge" data-price="760"
+                                data-img="assets/images/chair-silent.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Card 5 (Limited) -->
-                <article class="chair-card" data-category="limited" data-product-id="stationmaster" data-name="Heritage Wool Cantilever Chair" data-price="920" data-img="assets/images/chair-stationmaster.jpg" data-material="Forest Virgin Wool · Kiln-Dried Teak Bracing">
+                <article class="chair-card" data-category="limited" data-product-id="stationmaster" data-name="Heritage Wool Cantilever Chair"
+                    data-price="920" data-img="assets/images/chair-stationmaster.jpg"
+                    data-material="forest virgin wool · teak bracing">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill" style="background:var(--accent-terracotta); color:#fff;">limited 24 pcs</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="stationmaster" data-name="Heritage Wool Cantilever Chair" data-price="920" data-img="assets/images/chair-stationmaster.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="stationmaster" data-name="Heritage Wool Cantilever Chair" data-price="920" data-img="assets/images/chair-stationmaster.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=stationmaster">
@@ -321,105 +401,129 @@
                             <button type="button" class="btn-quick-view" data-product="stationmaster">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">90cm W &times; 86cm D &times; 80cm H</span>
-                            <span class="chair-wood">Kiln-Dried Ash</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=stationmaster" style="color:inherit; text-decoration:none;">Heritage Wool Cantilever Chair</a></h3>
+                            <span class="chair-price">&euro;920</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=stationmaster" style="color:inherit; text-decoration:none;">Heritage Wool Cantilever Chair</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #3b503d;"></span>
-                            <span>Forest Virgin Wool · Teak Bracing</span>
+                        <span class="chair-specs">forest virgin wool &bull; teak bracing</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#39543e;" title="Forest Wool"></span>
+                            <span class="c-swatch" style="background:#5e5447;" title="Kiln-Dried Ash"></span>
+                            <span class="c-swatch" style="background:#262a27;" title="Nordic Pine"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;920</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="stationmaster" data-name="Heritage Wool Cantilever Chair" data-price="920" data-img="assets/images/chair-stationmaster.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="stationmaster"
+                                data-name="Heritage Wool Cantilever Chair" data-price="920"
+                                data-img="assets/images/chair-stationmaster.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Card 6 (Storage / Credenza) -->
-                <article class="chair-card" data-category="storage" data-product-id="credenza" data-name="Atelier Smoked Ash Lowboard Credenza" data-price="1450" data-img="assets/images/dept_credenza.jpg" data-material="Solid Smoked Ash · Brass Sliding Hardware">
+                <article class="chair-card" data-category="storage" data-product-id="credenza" data-name="Atelier Smoked Ash Credenza"
+                    data-price="1450" data-img="assets/images/dept_credenza.jpg"
+                    data-material="solid smoked ash · brass sliding panels">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">case goods</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="credenza" data-name="Atelier Smoked Ash Lowboard Credenza" data-price="1450" data-img="assets/images/dept_credenza.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="credenza" data-name="Atelier Smoked Ash Credenza" data-price="1450" data-img="assets/images/dept_credenza.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=credenza">
-                            <img src="assets/images/dept_credenza.jpg" alt="Atelier Smoked Ash Lowboard Credenza" class="chair-card-image">
+                            <img src="assets/images/dept_credenza.jpg" alt="Atelier Smoked Ash Credenza" class="chair-card-image">
                         </a>
                         <div class="card-hover-actions">
                             <button type="button" class="btn-quick-view" data-product="credenza">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">180cm W &times; 45cm D &times; 58cm H</span>
-                            <span class="chair-wood">Solid Ash &amp; Brass</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=credenza" style="color:inherit; text-decoration:none;">Atelier Smoked Ash Credenza</a></h3>
+                            <span class="chair-price">&euro;1,450</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=credenza" style="color:inherit; text-decoration:none;">Atelier Smoked Ash Credenza</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #4a443a;"></span>
-                            <span>Solid Smoked Ash · Brass Sliding Panels</span>
+                        <span class="chair-specs">solid smoked ash &bull; brass sliding panels</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#423932;" title="Smoked Ash"></span>
+                            <span class="c-swatch" style="background:#c49d48;" title="Brushed Brass"></span>
+                            <span class="c-swatch" style="background:#282320;" title="Deep Walnut"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;1,450</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="credenza" data-name="Atelier Smoked Ash Lowboard Credenza" data-price="1450" data-img="assets/images/dept_credenza.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="credenza"
+                                data-name="Atelier Smoked Ash Credenza" data-price="1450"
+                                data-img="assets/images/dept_credenza.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
                 <!-- Card 7 (Dining / Stool) -->
-                <article class="chair-card" data-category="dining" data-product-id="stools" data-name="Sculptural Teak Counter &amp; Dining Stool" data-price="480" data-img="assets/images/dept_dining_stools.jpg" data-material="Solid Plantation Teak · Ergonomic Saddle">
+                <article class="chair-card" data-category="dining" data-product-id="stools" data-name="Sculptural Teak Counter Stool"
+                    data-price="480" data-img="assets/images/dept_dining_stools.jpg"
+                    data-material="solid plantation teak · carved saddle">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">artisan craft</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="stools" data-name="Sculptural Teak Counter &amp; Dining Stool" data-price="480" data-img="assets/images/dept_dining_stools.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="stools" data-name="Sculptural Teak Counter Stool" data-price="480" data-img="assets/images/dept_dining_stools.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=stools">
-                            <img src="assets/images/dept_dining_stools.jpg" alt="Sculptural Teak Counter &amp; Dining Stool" class="chair-card-image">
+                            <img src="assets/images/dept_dining_stools.jpg" alt="Sculptural Teak Counter Stool" class="chair-card-image">
                         </a>
                         <div class="card-hover-actions">
                             <button type="button" class="btn-quick-view" data-product="stools">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">46cm W &times; 42cm D &times; 68cm H</span>
-                            <span class="chair-wood">Plantation Teak</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=stools" style="color:inherit; text-decoration:none;">Sculptural Teak Counter Stool</a></h3>
+                            <span class="chair-price">&euro;480</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=stools" style="color:inherit; text-decoration:none;">Sculptural Teak Counter Stool</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #8c603b;"></span>
-                            <span>Solid Plantation Teak · Carved Saddle</span>
+                        <span class="chair-specs">solid plantation teak &bull; carved saddle</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#8f5c38;" title="Natural Teak"></span>
+                            <span class="c-swatch" style="background:#523a27;" title="Oiled Teak"></span>
+                            <span class="c-swatch" style="background:#2b221a;" title="Ebonized Teak"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;480</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="stools" data-name="Sculptural Teak Counter &amp; Dining Stool" data-price="480" data-img="assets/images/dept_dining_stools.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="stools"
+                                data-name="Sculptural Teak Counter Stool" data-price="480"
+                                data-img="assets/images/dept_dining_stools.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- Card 8 (Lighting) -->
-                <article class="chair-card" data-category="lighting" data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant" data-price="340" data-img="assets/images/dept_lighting_objects.jpg" data-material="Raw Terracotta Clay · Braided Textile Cord">
+                <!-- Card 8 (Lighting / Object) -->
+                <article class="chair-card" data-category="lighting" data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant"
+                    data-price="340" data-img="assets/images/dept_lighting_objects.jpg"
+                    data-material="raw terracotta · braided wheat cord">
                     <div class="chair-card-image-wrap">
                         <span class="chair-badge-pill">ceramic studio</span>
-                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist" data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant" data-price="340" data-img="assets/images/dept_lighting_objects.jpg">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
+                            data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant" data-price="340" data-img="assets/images/dept_lighting_objects.jpg">
+                            <svg class="wishlist-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                             </svg>
                         </button>
                         <a href="product.html?id=lighting">
@@ -429,22 +533,26 @@
                             <button type="button" class="btn-quick-view" data-product="lighting">quick view</button>
                         </div>
                     </div>
-                    <div class="chair-card-body">
-                        <div class="chair-specs-row">
-                            <span class="chair-dim">32cm Diam &times; 24cm H</span>
-                            <span class="chair-wood">Turned Ash Finial</span>
+                    <div class="chair-card-details">
+                        <div class="chair-title-row">
+                            <h3 class="chair-name"><a href="product.html?id=lighting" style="color:inherit; text-decoration:none;">Hand-Turned Terracotta Pendant</a></h3>
+                            <span class="chair-price">&euro;340</span>
                         </div>
-                        <h3 class="chair-title"><a href="product.html?id=lighting" style="color:inherit; text-decoration:none;">Hand-Turned Terracotta Pendant</a></h3>
-                        <div class="chair-material-pill">
-                            <span class="swatch-indicator" style="background-color: #b8603b;"></span>
-                            <span>Raw Terracotta · Braided Wheat Cord</span>
+                        <span class="chair-specs">raw terracotta &bull; braided wheat cord</span>
+
+                        <div class="card-swatches">
+                            <span class="c-swatch active" style="background:#b5613c;" title="Raw Terracotta"></span>
+                            <span class="c-swatch" style="background:#d99564;" title="Sand Blush"></span>
+                            <span class="c-swatch" style="background:#634b3e;" title="Kiln Earth"></span>
                         </div>
-                        <div class="chair-footer-row">
-                            <div class="chair-price-wrap">
-                                <span class="chair-price">&euro;340</span>
-                                <span class="chair-tax">vat incl.</span>
-                            </div>
-                            <button type="button" class="add-to-bag-btn" data-product-id="lighting" data-name="Hand-Turned Terracotta Pendant" data-price="340" data-img="assets/images/dept_lighting_objects.jpg">add to bag &rarr;</button>
+
+                        <div class="chair-footer-action">
+                            <button type="button" class="chair-action-pill add-to-bag-btn" data-product-id="lighting"
+                                data-name="Hand-Turned Terracotta Pendant" data-price="340"
+                                data-img="assets/images/dept_lighting_objects.jpg">
+                                <span>add to bag</span>
+                                <span class="action-arrow">&rarr;</span>
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -469,6 +577,7 @@
                     <div class="swatch-cube swatch-boucle">Sage Bouclé</div>
                     <div class="swatch-cube swatch-velvet">Cognac Velvet</div>
                 </div>
+            </div>
             </div>
         </section>
     </main>
@@ -640,12 +749,106 @@
                 filterShop();
             });
 
-            $('#shopSearchInput').on('input', filterShop);
+            $('#shopSearchInput').on('input', function() {
+                filterShop();
+                if ($(this).val().length > 0) {
+                    $('#searchClearBtn').show();
+                } else {
+                    $('#searchClearBtn').hide();
+                }
+            });
+
+            $('#searchClearBtn').on('click', function() {
+                $('#shopSearchInput').val('').focus();
+                $(this).hide();
+                filterShop();
+            });
+
+            const $grid = $('#shopProductsGrid');
+            const initialCards = $grid.children('.chair-card').get();
+
+            // Custom Select Dropdown logic
+            const $sortWrap = $('#shopSortCustomSelect');
+            const $sortTrigger = $('#shopSortTrigger');
+            const $sortLabel = $sortTrigger.find('.custom-select-label');
+            const $sortOptions = $sortWrap.find('.custom-select-option');
+            const $nativeSelect = $('#shopSortSelect');
+
+            $sortTrigger.on('click', function(e) {
+                e.stopPropagation();
+                const isOpen = $sortWrap.hasClass('is-open');
+                $('.custom-select-wrap').removeClass('is-open').find('.custom-select-trigger').attr('aria-expanded', 'false');
+                if (!isOpen) {
+                    $sortWrap.addClass('is-open');
+                    $(this).attr('aria-expanded', 'true');
+                }
+            });
+
+            $sortOptions.on('click', function(e) {
+                e.stopPropagation();
+                const val = $(this).data('value');
+                const labelText = $(this).find('span').text();
+
+                $sortLabel.text(labelText);
+                $sortOptions.removeClass('selected').attr('aria-selected', 'false');
+                $(this).addClass('selected').attr('aria-selected', 'true');
+
+                $sortWrap.removeClass('is-open');
+                $sortTrigger.attr('aria-expanded', 'false').focus();
+
+                // Sync with underlying select & trigger sort
+                $nativeSelect.val(val).trigger('change');
+            });
+
+            // Close when clicking outside
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.custom-select-wrap').length) {
+                    $('.custom-select-wrap').removeClass('is-open').find('.custom-select-trigger').attr('aria-expanded', 'false');
+                }
+            });
+
+            // Keyboard accessibility
+            $sortTrigger.on('keydown', function(e) {
+                if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    $sortWrap.addClass('is-open');
+                    $(this).attr('aria-expanded', 'true');
+                    $sortOptions.filter('.selected').focus() || $sortOptions.first().focus();
+                } else if (e.key === 'Escape') {
+                    $sortWrap.removeClass('is-open');
+                    $(this).attr('aria-expanded', 'false');
+                }
+            });
+
+            $sortOptions.on('keydown', function(e) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const $next = $(this).next('.custom-select-option');
+                    if ($next.length) $next.focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const $prev = $(this).prev('.custom-select-option');
+                    if ($prev.length) $prev.focus();
+                } else if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    $(this).trigger('click');
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    $sortWrap.removeClass('is-open');
+                    $sortTrigger.attr('aria-expanded', 'false').focus();
+                }
+            });
 
             $('#shopSortSelect').on('change', function() {
                 const sortMode = $(this).val();
-                const $grid = $('#shopProductsGrid');
-                const $cards = $grid.children('.chair-card').get();
+                let $cards = $grid.children('.chair-card').get();
+
+                if (sortMode === 'featured') {
+                    $.each(initialCards, function(i, card) {
+                        $grid.append(card);
+                    });
+                    return;
+                }
 
                 $cards.sort(function(a, b) {
                     const priceA = parseInt($(a).data('price'), 10);
