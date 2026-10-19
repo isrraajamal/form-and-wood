@@ -5,81 +5,87 @@ $(document).ready(function () {
   const totalChairItems = 4;
   let currentChairIndex = 1;
 
-  const chairsCarousel = $('.chairs-carousel').owlCarousel({
-    loop: true,
-    margin: 24,
-    nav: false,
-    dots: false,
-    autoplay: false,
-    smartSpeed: 550,
-    responsiveClass: true,
-    responsive: {
-      0: {
-        items: 1,
-        margin: 16
+  const $chairsCarousel = $('.chairs-carousel');
+  let chairsCarousel = null;
+  if ($chairsCarousel.length) {
+    chairsCarousel = $chairsCarousel.owlCarousel({
+      loop: true,
+      margin: 24,
+      nav: false,
+      dots: false,
+      autoplay: false,
+      smartSpeed: 550,
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 1,
+          margin: 16
+        },
+        680: {
+          items: 2,
+          margin: 20
+        },
+        1024: {
+          items: 3,
+          margin: 24
+        }
       },
-      680: {
-        items: 2,
-        margin: 20
-      },
-      1024: {
-        items: 3,
-        margin: 24
+      onTranslated: function (event) {
+        if (event.item) {
+          const index = (event.item.index % event.item.count) + 1;
+          $('#carouselCounter').text(
+            (index < 10 ? '0' : '') + index + ' / ' + (totalChairItems < 10 ? '0' : '') + totalChairItems
+          );
+        }
       }
-    },
-    onTranslated: function (event) {
-      if (event.item) {
-        const index = (event.item.index % event.item.count) + 1;
-        $('#carouselCounter').text(
-          (index < 10 ? '0' : '') + index + ' / ' + (totalChairItems < 10 ? '0' : '') + totalChairItems
-        );
-      }
-    }
-  });
+    });
 
-  $('#chairsPrev').on('click', function () {
-    chairsCarousel.trigger('prev.owl.carousel');
-  });
+    $('#chairsPrev').on('click', function () {
+      chairsCarousel.trigger('prev.owl.carousel');
+    });
 
-  $('#chairsNext').on('click', function () {
-    chairsCarousel.trigger('next.owl.carousel');
-  });
-
+    $('#chairsNext').on('click', function () {
+      chairsCarousel.trigger('next.owl.carousel');
+    });
+  }
 
   // Customer Testimonials / Stories Carousel
-  const storiesCarousel = $('.stories-carousel').owlCarousel({
-    loop: true,
-    margin: 24,
-    nav: false,
-    dots: false,
-    autoplay: true,
-    autoplayTimeout: 6000,
-    autoplayHoverPause: true,
-    smartSpeed: 600,
-    responsiveClass: true,
-    responsive: {
-      0: {
-        items: 1,
-        margin: 16
-      },
-      768: {
-        items: 2,
-        margin: 20
-      },
-      1100: {
-        items: 3,
-        margin: 24
+  const $storiesCarousel = $('.stories-carousel');
+  if ($storiesCarousel.length) {
+    const storiesCarousel = $storiesCarousel.owlCarousel({
+      loop: true,
+      margin: 24,
+      nav: false,
+      dots: false,
+      autoplay: true,
+      autoplayTimeout: 6000,
+      autoplayHoverPause: true,
+      smartSpeed: 600,
+      responsiveClass: true,
+      responsive: {
+        0: {
+          items: 1,
+          margin: 16
+        },
+        768: {
+          items: 2,
+          margin: 20
+        },
+        1100: {
+          items: 3,
+          margin: 24
+        }
       }
-    }
-  });
+    });
 
-  $('#storiesPrev').on('click', function () {
-    storiesCarousel.trigger('prev.owl.carousel');
-  });
+    $('#storiesPrev').on('click', function () {
+      storiesCarousel.trigger('prev.owl.carousel');
+    });
 
-  $('#storiesNext').on('click', function () {
-    storiesCarousel.trigger('next.owl.carousel');
-  });
+    $('#storiesNext').on('click', function () {
+      storiesCarousel.trigger('next.owl.carousel');
+    });
+  }
 
   // ==========================================
   // 2. HERO INTERACTIVE SWATCH PICKER & COMPANION CARD
@@ -425,54 +431,73 @@ $(document).ready(function () {
   });
 
   // ==========================================
-  // 5. ATELIER CART SYSTEM & DRAWER
+  // 5. ATELIER CART SYSTEM & DRAWER (PERSISTENT)
   // ==========================================
   let cart = [];
+  try {
+    const savedCart = localStorage.getItem('fw_cart');
+    if (savedCart) cart = JSON.parse(savedCart);
+  } catch (e) {
+    cart = [];
+  }
+
+  function saveCart() {
+    try {
+      localStorage.setItem('fw_cart', JSON.stringify(cart));
+    } catch (e) {}
+  }
 
   function updateCartUI() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    saveCart();
+    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
 
     $('#cartCountBadge').text(totalItems);
     $('#cartDrawerItemCount').text(`(${totalItems} ${totalItems === 1 ? 'item' : 'items'})`);
 
     const $container = $('#cartItemsContainer');
-    $container.empty();
+    if ($container.length) {
+      $container.empty();
 
-    if (cart.length === 0) {
-      $container.html(`
-        <div class="cart-empty-state" id="cartEmptyState">
-            <p>your atelier bag is empty.</p>
-            <span>explore our new armchair drops to begin.</span>
-            <a href="#catalog" class="btn-shop-empty" id="shopEmptyBtn">explore chairs</a>
-        </div>
-      `);
-      $('#cartDrawerFooter').hide();
-    } else {
-      cart.forEach((item, index) => {
-        $container.append(`
-          <div class="cart-item">
-            <img src="${item.img}" alt="${item.name}" class="cart-item-img">
-            <div class="cart-item-info">
-              <span class="cart-item-name">${item.name}</span>
-              <span class="cart-item-price">&euro;${item.price} &times; ${item.quantity}</span>
-            </div>
-            <button type="button" class="cart-remove-btn" data-index="${index}" title="Remove item">&times;</button>
+      if (cart.length === 0) {
+        $container.html(`
+          <div class="cart-empty-state" id="cartEmptyState">
+              <p>your atelier bag is empty.</p>
+              <span>explore our new armchair drops to begin.</span>
+              <a href="shop.html" class="btn-shop-empty" id="shopEmptyBtn">explore chairs</a>
           </div>
         `);
-      });
+        $('#cartDrawerFooter').hide();
+      } else {
+        cart.forEach((item, index) => {
+          $container.append(`
+            <div class="cart-item">
+              <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+              <div class="cart-item-info">
+                <span class="cart-item-name">${item.name}</span>
+                <span class="cart-item-price">&euro;${item.price} &times; ${item.quantity || 1}</span>
+              </div>
+              <button type="button" class="cart-remove-btn" data-index="${index}" title="Remove item">&times;</button>
+            </div>
+          `);
+        });
 
-      $('#cartSubtotalPrice').html(`&euro;${totalPrice}`);
-      $('#cartDrawerFooter').show();
+        $('#cartSubtotalPrice').html(`&euro;${totalPrice.toLocaleString()}`);
+        $('#cartDrawerFooter').show();
+      }
     }
   }
 
+  // Initial render on load
+  updateCartUI();
+
   function addToCart(product) {
+    const qtyToAdd = product.quantity ? parseInt(product.quantity, 10) : 1;
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
-      existing.quantity += 1;
+      existing.quantity = (existing.quantity || 1) + qtyToAdd;
     } else {
-      cart.push({ ...product, quantity: 1 });
+      cart.push({ ...product, quantity: qtyToAdd });
     }
     updateCartUI();
     showToast(`Added "${product.name}" to atelier bag`);
@@ -502,76 +527,194 @@ $(document).ready(function () {
     const removedItem = cart[idx];
     cart.splice(idx, 1);
     updateCartUI();
-    showToast(`Removed "${removedItem.name}" from bag`);
+    if (removedItem) {
+      showToast(`Removed "${removedItem.name}" from bag`);
+    }
   });
 
   $(document).on('click', '.add-to-bag-btn', function () {
     const product = {
-      id: $(this).data('product-id'),
+      id: $(this).data('product-id') || 'c-' + Date.now(),
       name: $(this).data('name'),
       price: parseInt($(this).data('price'), 10),
-      img: $(this).data('img')
+      img: $(this).data('img'),
+      quantity: 1
     };
     addToCart(product);
   });
 
   $('#checkoutBtn').on('click', function () {
-    alert('Thank you for exploring FORM & WOOD. Atelier concierge will connect with you.');
-    cart = [];
-    updateCartUI();
     closeCartDrawer();
+    window.location.href = 'checkout.html';
   });
 
   // ==========================================
-  // 6. QUICK VIEW MODAL
+  // 6. QUICK VIEW MODAL & CATALOG DATABASE
   // ==========================================
   const productsDB = {
     c1: {
       id: 'c1',
       name: 'Nordic Sculptural Bouclé Lounge',
       price: 840,
-      img: 'assets/images/hero-card-ready.jpg?v=7',
+      img: 'assets/images/hero-card-ready.jpg',
+      gallery: [
+        'assets/images/hero-card-ready.jpg',
+        'assets/images/chair-backup.jpg',
+        'assets/images/hero-cane-chair.jpg',
+        'assets/images/craft_detail.jpg'
+      ],
+      category: 'lounge',
+      material: 'Virgin Sage Bouclé · Solid European Ash',
       badge: 'batch #04 drop · atelier release',
       desc: 'Monolithic sculptural armchair tailored in sage green textured bouclé with deep interior ergonomics and reinforced timber bracing.',
-      specs: '88cm W × 82cm D × 76cm H · Solid Ash Frame · In Stock'
+      specs: '88cm W × 82cm D × 76cm H · Solid Ash Frame · In Stock',
+      wood: 'Natural Nordic Ash',
+      upholstery: 'Sage Green Bouclé',
+      leadTime: 'In stock — dispatches in 48h'
     },
     c2: {
       id: 'c2',
       name: 'Atelier Cane & Cognac Armchair',
       price: 790,
-      img: 'assets/images/hero-card-custom.jpg?v=5',
+      img: 'assets/images/hero-card-custom.jpg',
+      gallery: [
+        'assets/images/hero-card-custom.jpg',
+        'assets/images/chair-decisions.jpg',
+        'assets/images/craft_cane_weaving.jpg',
+        'assets/images/hero-cane-chair.jpg'
+      ],
+      category: 'cane',
+      material: 'Hand-Woven Natural Cane · Cognac Velvet',
       badge: 'atelier craft · heritage line',
       desc: 'Hand-woven natural cane webbing paired with cognac velvet and angled solid wood craftsmanship.',
-      specs: '82cm W × 80cm D × 78cm H · European Ash & Cane · In Stock'
+      specs: '82cm W × 80cm D × 78cm H · European Ash & Cane · In Stock',
+      wood: 'Solid Plantation Teak',
+      upholstery: 'Cognac Silk Velvet',
+      leadTime: 'In stock — dispatches in 48h'
     },
     c3: {
       id: 'c3',
       name: 'Smoked Ash & Mustard Club Chair',
       price: 820,
       img: 'assets/images/chair-trust-issues.jpg',
+      gallery: [
+        'assets/images/chair-trust-issues.jpg',
+        'assets/images/chair-backup.jpg',
+        'assets/images/craft_detail.jpg',
+        'assets/images/weekend.jpg'
+      ],
+      category: 'lounge',
+      material: 'Mustard Cotton Velvet · Smoked Ash Framing',
       badge: 'studio icon · best seller',
       desc: 'Sculptural ash framing meeting rich mustard velvet cushions with natural latex ergonomic interior core.',
-      specs: '80cm W × 78cm D × 75cm H · Smoked Ash · In Stock'
+      specs: '80cm W × 78cm D × 75cm H · Smoked Ash · In Stock',
+      wood: 'Smoked Mountain Ash',
+      upholstery: 'Ochre Club Velvet',
+      leadTime: 'In stock — dispatches in 48h'
     },
     c4: {
       id: 'c4',
       name: 'Minimalist Oak & Linen Lounge',
       price: 760,
       img: 'assets/images/chair-silent.jpg',
+      gallery: [
+        'assets/images/chair-silent.jpg',
+        'assets/images/hero-card-terracotta.jpg',
+        'assets/images/craft_detail.jpg',
+        'assets/images/vintage-living-room.jpg'
+      ],
+      category: 'lounge',
+      material: 'Belgian Oatmeal Linen · Curved White Oak',
       badge: 'minimalist · quiet luxury',
       desc: 'Oatmeal textured linen tailored over curved solid oak architecture for contemplative seating spaces.',
-      specs: '85cm W × 82cm D × 74cm H · Natural Oak · In Stock'
+      specs: '85cm W × 82cm D × 74cm H · Natural Oak · In Stock',
+      wood: 'Curved European White Oak',
+      upholstery: 'Belgian Oatmeal Linen',
+      leadTime: 'In stock — dispatches in 48h'
     },
     stationmaster: {
-      id: 'c-stationmaster',
+      id: 'stationmaster',
       name: 'Heritage Wool Cantilever Chair',
       price: 920,
       img: 'assets/images/chair-stationmaster.jpg',
+      gallery: [
+        'assets/images/chair-stationmaster.jpg',
+        'assets/images/hero-chair.jpg',
+        'assets/images/craft_detail.jpg',
+        'assets/images/monograph_kreuzberg_loft.jpg'
+      ],
+      category: 'limited',
+      material: 'Forest Virgin Wool · Kiln-Dried Teak Bracing',
       badge: 'curator selection · limited 24 pcs',
       desc: 'Signature forest-green tailored armchair with curved cantilevered armrests and heavy virgin Scandinavian wool.',
-      specs: '90cm W × 86cm D × 80cm H · Kiln-Dried Ash · Limited Edition'
+      specs: '90cm W × 86cm D × 80cm H · Kiln-Dried Ash · Limited Edition',
+      wood: 'Kiln-Dried Ash Bracing',
+      upholstery: 'Forest Virgin Wool',
+      leadTime: 'Limited batch — 6 pieces remaining'
+    },
+    credenza: {
+      id: 'credenza',
+      name: 'Atelier Smoked Ash Lowboard Credenza',
+      price: 1450,
+      img: 'assets/images/dept_credenza.jpg',
+      gallery: [
+        'assets/images/dept_credenza.jpg',
+        'assets/images/vintage-credenza.jpg',
+        'assets/images/craft_detail.jpg',
+        'assets/images/vintage-living-room.jpg'
+      ],
+      category: 'storage',
+      material: 'Solid Smoked Ash · Brass Sliding Hardware',
+      badge: 'architectural case goods',
+      desc: 'Hand-planed smoked ash credenza with soft-close tambour sliding panels and solid brass recessed hardware.',
+      specs: '180cm W × 45cm D × 58cm H · Solid Ash · In Stock',
+      wood: 'Smoked European Ash',
+      upholstery: 'Natural Wax Finish',
+      leadTime: 'In stock — dispatches in 72h'
+    },
+    stools: {
+      id: 'stools',
+      name: 'Sculptural Teak Counter & Dining Stool',
+      price: 480,
+      img: 'assets/images/dept_dining_stools.jpg',
+      gallery: [
+        'assets/images/dept_dining_stools.jpg',
+        'assets/images/vintage-dining-chair.jpg',
+        'assets/images/craft_detail.jpg',
+        'assets/images/weekend.jpg'
+      ],
+      category: 'dining',
+      material: 'Solid Plantation Teak · Ergonomic Saddle',
+      badge: 'artisan dining drop',
+      desc: 'Carved saddle seat contouring to the body, supported by tapered 4-leg architectural splay with blind tenons.',
+      specs: '46cm W × 42cm D × 68cm H · Plantation Teak · In Stock',
+      wood: 'Plantation Teak',
+      upholstery: 'Hand-Rubbed Linseed Oil',
+      leadTime: 'In stock — dispatches in 48h'
+    },
+    lighting: {
+      id: 'lighting',
+      name: 'Hand-Turned Terracotta Pendant',
+      price: 340,
+      img: 'assets/images/dept_lighting_objects.jpg',
+      gallery: [
+        'assets/images/dept_lighting_objects.jpg',
+        'assets/images/craft_detail.jpg',
+        'assets/images/monograph_kreuzberg_loft.jpg',
+        'assets/images/hero-card-terracotta.jpg'
+      ],
+      category: 'lighting',
+      material: 'Raw Terracotta Clay · Braided Textile Cord',
+      badge: 'ceramic studio drop',
+      desc: 'Thrown on a slow potter’s wheel in Copenhagen and kiln-fired to porous matte terracotta perfection.',
+      specs: '32cm Diam × 24cm H · Matte Terracotta · In Stock',
+      wood: 'Turned Ash Finial',
+      upholstery: 'Braided Wheat Cord',
+      leadTime: 'In stock — dispatches in 24h'
     }
   };
+
+  window.productsDB = productsDB;
 
   let selectedModalProduct = null;
 
@@ -684,21 +827,56 @@ $(document).ready(function () {
   });
 
   // ==========================================
-  // 8. WISHLIST TOGGLE & TOAST
+  // 8. WISHLIST TOGGLE & TOAST (PERSISTENT)
   // ==========================================
+  let wishlist = [];
+  try {
+    const savedWish = localStorage.getItem('fw_wishlist');
+    if (savedWish) wishlist = JSON.parse(savedWish);
+  } catch (e) {
+    wishlist = [];
+  }
+
+  function saveWishlist() {
+    try {
+      localStorage.setItem('fw_wishlist', JSON.stringify(wishlist));
+    } catch (e) {}
+    updateWishlistUI();
+  }
+
+  function updateWishlistUI() {
+    const count = wishlist.length;
+    $('#wishlistCountBadge, .wishlist-count-badge').text(count);
+    $('.chair-wishlist-btn').each(function () {
+      const pid = $(this).data('product-id') || $(this).closest('[data-product-id]').data('product-id');
+      if (pid && wishlist.some(item => item.id === pid)) {
+        $(this).addClass('active');
+      }
+    });
+  }
+
+  updateWishlistUI();
+
   $(document).on('click', '.chair-wishlist-btn', function (e) {
     e.preventDefault();
     e.stopPropagation();
     const $btn = $(this);
-    const pieceName = $btn.data('name') || 'Specimen';
-    
-    $btn.toggleClass('active');
-    
-    if ($btn.hasClass('active')) {
-      showToast(`Saved &ldquo;${pieceName}&rdquo; to your private wishlist`);
-    } else {
+    const pid = $btn.data('product-id') || $btn.closest('[data-product-id]').data('product-id') || ('specimen-' + Date.now());
+    const pieceName = $btn.data('name') || $btn.closest('[data-name]').data('name') || 'Atelier Specimen';
+    const price = parseInt($btn.data('price') || $btn.closest('[data-price]').data('price') || 840, 10);
+    const img = $btn.data('img') || $btn.closest('[data-img]').data('img') || 'assets/images/chair-backup.jpg';
+
+    const index = wishlist.findIndex(item => item.id === pid);
+    if (index > -1) {
+      wishlist.splice(index, 1);
+      $btn.removeClass('active');
       showToast(`Removed &ldquo;${pieceName}&rdquo; from wishlist`);
+    } else {
+      wishlist.push({ id: pid, name: pieceName, price: price, img: img });
+      $btn.addClass('active');
+      showToast(`Saved &ldquo;${pieceName}&rdquo; to your private wishlist`);
     }
+    saveWishlist();
   });
 
   // Swatch interaction for cards

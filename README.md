@@ -9,34 +9,37 @@ Experience the live website here:
 
 ---
 
-## 📑 Website Sections Directory
+## 📑 Website Pages Directory
 
-You can share the main site or navigate directly to specific curated sections:
+Explore the complete multi-page atelier suite:
 
-| Section | Description | Direct Link |
+| Page | Description | Direct Preview Link |
 | :--- | :--- | :--- |
-| **Atelier Home** | Hero banner, architectural manifesto, craftsmanship ethos | [Preview Home](https://isrraajamal.github.io/form-and-wood/#hero) |
-| **Categories** | Curated collections (Lounge, Dining, Desk, Sculptural) | [Preview Categories](https://isrraajamal.github.io/form-and-wood/#collection) |
-| **Chairs Catalog** | Dynamic catalog with filters, price sorting & quick view | [Preview Chairs](https://isrraajamal.github.io/form-and-wood/#catalog) |
-| **Room Suites** | Living suites, study nooks, and architectural dining spaces | [Preview Room Sets](https://isrraajamal.github.io/form-and-wood/#suite) |
-| **Lookbook** | Visual lookbook, styling inspirations & customer interiors | [Preview Lookbook](https://isrraajamal.github.io/form-and-wood/#vintage) |
-| **FAQ & Help** | White-glove delivery, lead times, timber care, and warranty | [Preview FAQ](https://isrraajamal.github.io/form-and-wood/#faq) |
+| **Home** | Brand showcase, hero atelier drop, categories, lookbook & room sets | [Preview Home](https://isrraajamal.github.io/form-and-wood/index.html) |
+| **Collection (Shop)** | Complete catalog with category filters, search, sorting & quick view | [Preview Collection](https://isrraajamal.github.io/form-and-wood/shop.html) |
+| **Product Detail** | Multi-angle gallery, finish swatches, timber specs & dimensions | [Preview Product](https://isrraajamal.github.io/form-and-wood/product.html?id=c1) |
+| **Atelier & Heritage** | The Copenhagen story, 4 craft pillars, master artisans & studios | [Preview Atelier](https://isrraajamal.github.io/form-and-wood/about.html) |
+| **Appointments & Concierge** | Private studio consultation reservation, location guide & FAQ | [Preview Appointments](https://isrraajamal.github.io/form-and-wood/contact.html) |
+| **Atelier Bag (Cart)** | Full shopping bag review, white-glove shipping meter & notes | [Preview Cart](https://isrraajamal.github.io/form-and-wood/cart.html) |
+| **Checkout** | 3-step luxury checkout, floor placement options & order recording | [Preview Checkout](https://isrraajamal.github.io/form-and-wood/checkout.html) |
+| **Saved Pieces (Wishlist)** | Private client curation board with move-to-bag & share link | [Preview Wishlist](https://isrraajamal.github.io/form-and-wood/wishlist.html) |
 
 ---
 
-## 🌟 Key Features
+## 🌟 Key Architecture & Features
 
-- **Responsive & Mobile-First**: Adaptive layout engineered for ultra-wide displays down to mobile screens.
-- **Interactive Cart Drawer**: Real-time slide-out bag with dynamic quantity controls, subtotals, and toast notifications.
-- **Product Quick View Modal**: High-definition preview with timber specifications, lead times, and instant add-to-bag.
-- **Micro-Interactions & Carousels**: Smooth Owl Carousel integrations for lookbook reels, testimonials, and armchair drops.
-- **Structured Schema.org Data**: Built-in JSON-LD SEO metadata for Organization, Furniture Store, and ItemList catalogs.
+- **Cohesive Luxury Design System**: Custom tailored tokens for Cream (`#f4f1ea`), Dark Charcoal (`#141412`), Terracotta (`#b8603b`), and Sage (`#5b6f59`).
+- **Persistent State Management**: Cart and Wishlist synchronize seamlessly across all pages via `localStorage`.
+- **Dynamic Product Loading**: `product.html` dynamically renders full specs, image gallery, and swatches for any specimen via query parameters (e.g. `?id=c1`, `?id=c2`, `?id=c3`, `?id=c4`, `?id=stationmaster`, `?id=credenza`, `?id=stools`, `?id=lighting`).
+- **Interactive Modals & Drawers**: Quick view modal, slide-out cart drawer, appointment booking confirmation, and checkout success simulation.
+- **Micro-Interactions**: Filter tabs, real-time catalog search, quantity steppers, swatch pickers, and toast notifications.
+- **SEO & Schema.org**: JSON-LD structured data for Organization, Furniture Store, and ItemList.
 
 ---
 
 ## 🛠️ Built With
 
-- **HTML5 & Vanilla CSS3**: Semantic markup and modern custom properties design system
+- **HTML5 & Vanilla CSS3**: Semantic markup and custom properties design system
 - **JavaScript (ES6+) & jQuery**: Reactive cart state, modal dialogues, toast system
-- **Owl Carousel**: Smooth multi-device carousel sliders
+- **Owl Carousel**: Multi-device touch sliders
 - **Plus Jakarta Sans**: Typography via Google Fonts

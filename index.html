@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORM &amp; WOOD — Architectural Furniture Atelier &amp; Handcrafted Seating</title>
-    
+
     <!-- Primary Meta Tags -->
     <meta name="title" content="FORM &amp; WOOD — Architectural Furniture Atelier &amp; Handcrafted Seating">
     <meta name="description"
@@ -171,14 +171,24 @@
 
                 <ul class="nav-center-links" role="menubar" aria-label="Main navigation categories">
                     <li role="none"><a href="#hero" class="nav-link active" role="menuitem">Home</a></li>
-                    <li role="none"><a href="#collection" class="nav-link" role="menuitem">Categories</a></li>
-                    <li role="none"><a href="#catalog" class="nav-link" role="menuitem">Chairs</a></li>
-                    <li role="none"><a href="#suite" class="nav-link" role="menuitem">Room Sets</a></li>
+                    <li role="none"><a href="shop.html" class="nav-link" role="menuitem">Collection</a></li>
+                    <li role="none"><a href="about.html" class="nav-link" role="menuitem">Atelier</a></li>
                     <li role="none"><a href="#vintage" class="nav-link" role="menuitem">Lookbook</a></li>
-                    <li role="none"><a href="#faq" class="nav-link" role="menuitem">FAQ &amp; Help</a></li>
+                    <li role="none"><a href="contact.html" class="nav-link" role="menuitem">Appointments</a></li>
                 </ul>
 
                 <div class="nav-actions">
+                    <a href="wishlist.html" class="nav-bag-btn" id="openWishlistBtn" aria-label="Saved Wishlist" title="Saved Wishlist" style="text-decoration:none;">
+                        <span class="bag-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </span>
+                        <span class="bag-label">saved</span>
+                        <span class="bag-count wishlist-count-badge" id="wishlistCountBadge">0</span>
+                    </a>
+
                     <button type="button" class="nav-bag-btn" id="openCartBtn" aria-label="Open Shopping Bag">
                         <span class="bag-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -191,7 +201,7 @@
                         <span class="bag-label">bag</span>
                         <span class="bag-count" id="cartCountBadge">0</span>
                     </button>
-                    <a href="#contact" class="nav-contact-pill">atelier visit</a>
+                    <a href="contact.html" class="nav-contact-pill">atelier visit</a>
                     <button type="button" class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -209,15 +219,13 @@
                 aria-label="Close menu">&times;</button>
         </div>
         <ul class="mobile-nav-list">
-            <li><a href="#hero" class="mobile-nav-link">home</a></li>
-            <li><a href="#collection" class="mobile-nav-link">categories</a></li>
-            <li><a href="#catalog" class="mobile-nav-link">chairs</a></li>
-            <li><a href="#suite" class="mobile-nav-link">room sets</a></li>
+            <li><a href="index.html" class="mobile-nav-link active">home</a></li>
+            <li><a href="shop.html" class="mobile-nav-link">the collection</a></li>
+            <li><a href="about.html" class="mobile-nav-link">atelier &amp; heritage</a></li>
             <li><a href="#vintage" class="mobile-nav-link">lookbook</a></li>
-            <li><a href="#craft" class="mobile-nav-link">craft &amp; materials</a></li>
-            <li><a href="#stories" class="mobile-nav-link">reviews &amp; spaces</a></li>
-            <li><a href="#faq" class="mobile-nav-link">faq &amp; help</a></li>
-            <li><a href="#contact" class="mobile-nav-link">contact &amp; showroom</a></li>
+            <li><a href="contact.html" class="mobile-nav-link">appointments &amp; concierge</a></li>
+            <li><a href="cart.html" class="mobile-nav-link">full shopping bag</a></li>
+            <li><a href="wishlist.html" class="mobile-nav-link">saved pieces</a></li>
         </ul>
         <div class="mobile-drawer-footer">
             <p>handcrafted furniture &bull; bespoke commissions</p>
@@ -686,7 +694,9 @@
                             ///////////////////////////////////////////////////
                         </div>
                         <p class="spotlight-desc">
-                            Sculptural seating engineered for intimate living spaces &mdash; defined by hand-turned solid hardwoods, breathable cane weave, and bespoke upholstery made to order in limited studio runs.
+                            Sculptural seating engineered for intimate living spaces &mdash; defined by hand-turned
+                            solid hardwoods, breathable cane weave, and bespoke upholstery made to order in limited
+                            studio runs.
                         </p>
                         <div class="spotlight-perks">
                             <span class="perk-item">✓ 10-year mortise joinery warranty</span>
@@ -745,9 +755,9 @@
                     </article>
 
                     <!-- Card 2 -->
-                    <article class="chair-card" data-product-id="c2"
-                        data-name="Atelier Cane & Cognac Armchair" data-price="790"
-                        data-img="assets/images/chair-decisions.jpg" data-material="woven cane webbing · cognac velvet">
+                    <article class="chair-card" data-product-id="c2" data-name="Atelier Cane & Cognac Armchair"
+                        data-price="790" data-img="assets/images/chair-decisions.jpg"
+                        data-material="woven cane webbing · cognac velvet">
                         <div class="chair-card-image-wrap">
                             <span class="chair-badge-pill">atelier craft</span>
                             <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
@@ -760,8 +770,8 @@
                                     </path>
                                 </svg>
                             </button>
-                            <img src="assets/images/chair-decisions.jpg"
-                                alt="Atelier Cane & Cognac Armchair armchair" class="chair-card-image">
+                            <img src="assets/images/chair-decisions.jpg" alt="Atelier Cane & Cognac Armchair armchair"
+                                class="chair-card-image">
                             <div class="card-hover-actions">
                                 <button type="button" class="btn-quick-view" data-product="c2">quick view</button>
                             </div>
@@ -837,8 +847,9 @@
                     </article>
 
                     <!-- Card 4 -->
-                    <article class="chair-card" data-product-id="c4" data-name="Minimalist Oak & Linen Lounge" data-price="760"
-                        data-img="assets/images/chair-silent.jpg" data-material="oatmeal textured linen · curved oak">
+                    <article class="chair-card" data-product-id="c4" data-name="Minimalist Oak & Linen Lounge"
+                        data-price="760" data-img="assets/images/chair-silent.jpg"
+                        data-material="oatmeal textured linen · curved oak">
                         <div class="chair-card-image-wrap">
                             <span class="chair-badge-pill">minimalist</span>
                             <button type="button" class="chair-wishlist-btn" aria-label="Save to wishlist"
@@ -1304,8 +1315,8 @@
 
                     <div class="philosophy-media-col">
                         <div class="craft-image-frame">
-                            <img src="assets/images/craft_cane_weaving.jpg" alt="Artisan hand-weaving natural cane onto a solid teak chair frame"
-                                class="craft-img">
+                            <img src="assets/images/craft_cane_weaving.jpg"
+                                alt="Artisan hand-weaving natural cane onto a solid teak chair frame" class="craft-img">
 
                             <!-- Interactive Craft Hotspots -->
                             <div class="craft-hotspot hotspot-1" style="top: 24%; left: 28%;">
@@ -1315,7 +1326,8 @@
                                 </button>
                                 <div class="hotspot-tooltip">
                                     <strong>Mortise &amp; Tenon Joinery</strong>
-                                    <span>Solid teak frames locked by hand-cut joints, no screws, built to last generations.</span>
+                                    <span>Solid teak frames locked by hand-cut joints, no screws, built to last
+                                        generations.</span>
                                 </div>
                             </div>
 
@@ -1326,7 +1338,8 @@
                                 </button>
                                 <div class="hotspot-tooltip">
                                     <strong>Hand-Woven Natural Cane</strong>
-                                    <span>Each strand is soaked, woven and tensioned by hand for a breathable, lasting seat.</span>
+                                    <span>Each strand is soaked, woven and tensioned by hand for a breathable, lasting
+                                        seat.</span>
                                 </div>
                             </div>
 
@@ -1426,7 +1439,8 @@
                     <article class="story-card">
                         <div class="story-rating" aria-label="5 out of 5 stars">★★★★★</div>
                         <p class="story-quote">
-                            &laquo;In our sunlit studio in Stockholm, this minimalist oak &amp; linen lounge chair has become the sanctuary
+                            &laquo;In our sunlit studio in Stockholm, this minimalist oak &amp; linen lounge chair has
+                            become the sanctuary
                             for slow mornings. The curved oak joinery is flawless under hand.&raquo;
                         </p>
                         <div class="story-author-wrap">
@@ -1546,7 +1560,8 @@
                             <em>new atelier arrivals.</em>
                         </h2>
                         <p class="newsletter-desc">
-                            Subscribe for early batch announcements, private studio invites, and seasonal lookbooks. Thoughtful, quiet updates only.
+                            Subscribe for early batch announcements, private studio invites, and seasonal lookbooks.
+                            Thoughtful, quiet updates only.
                         </p>
                     </div>
 
@@ -1590,22 +1605,22 @@
                 <div class="footer-col">
                     <h4 class="footer-col-title">catalog</h4>
                     <ul class="footer-links-list">
-                        <li><a href="#catalog" class="footer-link">accent armchairs</a></li>
-                        <li><a href="#catalog" class="footer-link">sculptural seating</a></li>
-                        <li><a href="#vintage" class="footer-link">vintage in action</a></li>
-                        <li><a href="#catalog" class="footer-link">limited batches</a></li>
-                        <li><a href="#craft" class="footer-link">material swatch kits</a></li>
+                        <li><a href="shop.html" class="footer-link">accent armchairs</a></li>
+                        <li><a href="shop.html?filter=cane" class="footer-link">cane &amp; teak</a></li>
+                        <li><a href="shop.html?filter=storage" class="footer-link">credenzas &amp; storage</a></li>
+                        <li><a href="shop.html?filter=limited" class="footer-link">limited batches</a></li>
+                        <li><a href="contact.html?type=swatch" class="footer-link">material swatch kits</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4 class="footer-col-title">studio ethos</h4>
                     <ul class="footer-links-list">
-                        <li><a href="#craft" class="footer-link">craft &amp; philosophy</a></li>
-                        <li><a href="#stories" class="footer-link">client stories</a></li>
-                        <li><a href="#contact" class="footer-link">trade &amp; architects</a></li>
-                        <li><a href="#hero" class="footer-link">sustainability pledge</a></li>
-                        <li><a href="#contact" class="footer-link">atelier appointments</a></li>
+                        <li><a href="about.html" class="footer-link">craft &amp; philosophy</a></li>
+                        <li><a href="about.html#artisans" class="footer-link">master joiners</a></li>
+                        <li><a href="contact.html" class="footer-link">trade &amp; architects</a></li>
+                        <li><a href="about.html#sustainability" class="footer-link">sustainability pledge</a></li>
+                        <li><a href="contact.html" class="footer-link">atelier appointments</a></li>
                     </ul>
                 </div>
 
@@ -1709,7 +1724,10 @@
                 <span class="cart-subtotal-price" id="cartSubtotalPrice">&euro;0</span>
             </div>
             <p class="cart-shipping-notice">inclusive of white-glove packaging &bull; vat included</p>
-            <button type="button" class="btn-checkout" id="checkoutBtn">proceed to atelier checkout &rarr;</button>
+            <div style="display: flex; gap: 10px; margin-top: 14px;">
+                <a href="cart.html" class="btn-shop-empty" style="flex:1; text-align:center; padding: 14px; text-decoration:none; background:rgba(20,20,18,0.06); color:var(--text-dark); border-radius:var(--radius-pill); font-weight:700;">view bag</a>
+                <button type="button" class="btn-checkout" id="checkoutBtn" style="flex:1.8;">proceed to checkout &rarr;</button>
+            </div>
         </div>
     </aside>
 

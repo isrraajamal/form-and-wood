@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White-Glove Checkout — FORM &amp; WOOD Atelier</title>
+    
+    <meta name="title" content="White-Glove Checkout — FORM &amp; WOOD Atelier">
+    <meta name="description"
+        content="Secure checkout for FORM &amp; WOOD architectural seating and handcrafted furniture. Specialized European white-glove room delivery.">
+    <link rel="canonical" href="https://formandwood.com/checkout.html">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+
+    <!-- Brand Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg?v=2">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css?v=5.3">
+    <link rel="stylesheet" href="css/pages.css?v=1.0">
+</head>
+
+<body>
+
+    <!-- 0. STICKY ATELIER NAVBAR -->
+    <header class="site-header" id="header">
+        <div class="container header-container">
+            <nav class="navbar" aria-label="Main Navigation">
+                <div class="nav-left">
+                    <a href="index.html" class="brand-logo" aria-label="FORM & WOOD home">
+                        <span class="logo-main">FORM &amp; WOOD.</span>
+                        <span class="logo-sub">furniture atelier · est. 2026</span>
+                    </a>
+                </div>
+
+                <div style="font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-terracotta); display: flex; align-items: center; gap: 8px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span>256-Bit SSL Encrypted Checkout</span>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="cart.html" class="nav-contact-pill" style="text-decoration:none;">&larr; return to bag</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CHECKOUT CONTENT -->
+    <main>
+        <section class="container" style="padding-top: 36px;">
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">/</span>
+                <a href="cart.html">Atelier Bag</a>
+                <span class="sep">/</span>
+                <span class="current">White-Glove Checkout</span>
+            </nav>
+            <h1 class="page-title" style="margin-bottom: 24px;">Atelier Checkout &mdash;<br><em>White-Glove Delivery Registry</em></h1>
+        </section>
+
+        <section class="checkout-page-section container">
+            <div class="checkout-grid">
+                <!-- LEFT FORM STEPS -->
+                <div>
+                    <form id="checkoutMainForm">
+                        <!-- Step 1: Client Credentials -->
+                        <div class="checkout-step-block">
+                            <div class="step-header">
+                                <span class="step-num">1</span>
+                                <h2 class="step-title">Client Information</h2>
+                            </div>
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="checkoutEmail">Email Address</label>
+                                    <input type="email" id="checkoutEmail" class="form-input" placeholder="client@domain.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="checkoutPhone">Mobile Phone (For courier coordination)</label>
+                                    <input type="tel" id="checkoutPhone" class="form-input" placeholder="+45 33 12 40 00" required>
+                                </div>
+                            </div>
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="checkoutFirstName">First Name</label>
+                                    <input type="text" id="checkoutFirstName" class="form-input" placeholder="Elena" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="checkoutLastName">Last Name</label>
+                                    <input type="text" id="checkoutLastName" class="form-input" placeholder="Rostova" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Delivery & Floor Handling -->
+                        <div class="checkout-step-block">
+                            <div class="step-header">
+                                <span class="step-num">2</span>
+                                <h2 class="step-title">White-Glove Delivery Destination</h2>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="checkoutCountry">Destination Country</label>
+                                <select id="checkoutCountry" class="form-select" required>
+                                    <option value="DK">Denmark (Copenhagen Atelier Dispatch)</option>
+                                    <option value="DE">Germany (Berlin Studio Hub)</option>
+                                    <option value="FR">France (Paris Salon Hub)</option>
+                                    <option value="SE">Sweden</option>
+                                    <option value="NO">Norway</option>
+                                    <option value="NL">Netherlands</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CH">Switzerland</option>
+                                    <option value="US">United States (Special Freight)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="checkoutAddress">Street Address &amp; Residence Number</label>
+                                <input type="text" id="checkoutAddress" class="form-input" placeholder="e.g. Bredgade 42, Apt 3B" required>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="checkoutCity">City</label>
+                                    <input type="text" id="checkoutCity" class="form-input" placeholder="København" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="checkoutPostal">Postal Code</label>
+                                    <input type="text" id="checkoutPostal" class="form-input" placeholder="1260" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="checkoutFloor">Floor Access &amp; Room Placement</label>
+                                <select id="checkoutFloor" class="form-select">
+                                    <option value="elevator">Ground Floor or Building with Freight Elevator</option>
+                                    <option value="stairs-low">Stair Access (1st to 2nd Floor)</option>
+                                    <option value="stairs-high">Stair Access (3rd Floor or Higher)</option>
+                                    <option value="concierge">Deliver to Building Reception / Concierge</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Payment Options -->
+                        <div class="checkout-step-block">
+                            <div class="step-header">
+                                <span class="step-num">3</span>
+                                <h2 class="step-title">Settlement Method</h2>
+                            </div>
+
+                            <div class="payment-options-grid">
+                                <button type="button" class="payment-tab-btn active" data-pay="card">
+                                    &#128179; Credit / Debit Card
+                                </button>
+                                <button type="button" class="payment-tab-btn" data-pay="apple">
+                                    &#63743; Apple / Google Pay
+                                </button>
+                                <button type="button" class="payment-tab-btn" data-pay="wire">
+                                    &#127963; Atelier Bank Wire
+                                </button>
+                            </div>
+
+                            <!-- Card Form Container -->
+                            <div id="cardFieldsContainer">
+                                <div class="form-group">
+                                    <label class="form-label" for="cardHolder">Name on Card</label>
+                                    <input type="text" id="cardHolder" class="form-input" placeholder="Elena Rostova">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="cardNumber">Card Number</label>
+                                    <input type="text" id="cardNumber" class="form-input" placeholder="4242 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4242" maxlength="19">
+                                </div>
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <label class="form-label" for="cardExp">Expiry</label>
+                                        <input type="text" id="cardExp" class="form-input" placeholder="MM / YY" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="cardCvc">CVC</label>
+                                        <input type="text" id="cardCvc" class="form-input" placeholder="123" maxlength="4">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="wireNoticeContainer" style="display: none; background: var(--bg-cream); padding: 18px; border-radius: var(--radius-sm); font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">
+                                <strong>Direct Bank Wire Transfer (IBAN/SWIFT)</strong><br>
+                                An official pro-forma invoice with Copenhagen atelier bank coordinates will be emailed immediately. Your batch specimens will be reserved for 5 business days awaiting transfer.
+                            </div>
+
+                            <button type="submit" class="btn-proceed-checkout" id="submitOrderBtn" style="margin-top: 24px; font-size: 1rem; padding: 18px 32px;">
+                                &#128274; authorize white-glove order &bull; <span id="checkoutSubmitTotal">&euro;0</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- RIGHT STICKY ORDER REVIEW -->
+                <div class="order-summary-card">
+                    <h3 class="summary-title">Registry Order (<span id="checkoutSummaryCount">0</span>)</h3>
+
+                    <!-- Mini items list -->
+                    <div id="checkoutMiniItems" style="display:flex; flex-direction:column; gap:14px; margin-bottom:20px; max-height:260px; overflow-y:auto;">
+                        <!-- Dynamic items -->
+                    </div>
+
+                    <!-- Promo Code input -->
+                    <div style="display:flex; gap:8px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid rgba(20,20,18,0.08);">
+                        <input type="text" id="promoCodeInput" class="form-input" placeholder="Promo / Trade Code" style="padding:10px 14px; font-size:0.875rem; text-transform:uppercase;">
+                        <button type="button" id="applyPromoBtn" class="filter-btn" style="padding:10px 16px;">Apply</button>
+                    </div>
+
+                    <div class="summary-line-row">
+                        <span>Items Subtotal</span>
+                        <span id="checkoutSubtotal">&euro;0</span>
+                    </div>
+
+                    <div class="summary-line-row" id="promoRow" style="display:none; color:var(--accent-sage);">
+                        <span>Trade Discount (10%)</span>
+                        <span id="promoAmount">-&euro;0</span>
+                    </div>
+
+                    <div class="summary-line-row">
+                        <span>White-Glove Placement</span>
+                        <span id="checkoutShipping">&euro;0</span>
+                    </div>
+
+                    <div class="summary-line-row">
+                        <span>VAT (25% Included)</span>
+                        <span id="checkoutTax">&euro;0</span>
+                    </div>
+
+                    <div class="summary-line-row total">
+                        <span>Grand Total</span>
+                        <span id="checkoutGrandTotal">&euro;0</span>
+                    </div>
+
+                    <div style="margin-top: 20px; font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                        By authorizing this order, you secure limited numbered studio batch pieces backed by our 10-year mortise joinery warranty and lifetime atelier restoration pledge.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ORDER SUCCESS MODAL -->
+    <div class="order-success-overlay" id="orderSuccessModal">
+        <div class="order-success-modal">
+            <div class="success-icon-badge">&#10003;</div>
+            <h2 style="font-size: 1.85rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 8px;">Order Recorded</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px;">
+                Thank you for welcoming FORM &amp; WOOD into your sanctuary. Your specimen has been logged with our Copenhagen master joiners for white-glove crating and dispatch.
+            </p>
+            <div class="success-order-id" id="confirmedOrderId">FW-2026-8419</div>
+            <div style="background:var(--bg-cream); border-radius:var(--radius-md); padding:16px; margin-bottom:24px; font-size:0.875rem; text-align:left; line-height:1.6;">
+                <strong>Estimated Delivery:</strong> 3 &ndash; 5 Business Days<br>
+                <strong>Handling:</strong> Dedicated Two-Person White-Glove Team<br>
+                <strong>Confirmation Email:</strong> Dispatched with tracking link
+            </div>
+            <button type="button" class="btn-proceed-checkout" id="orderSuccessReturnBtn">
+                return to collection &rarr;
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let cart = [];
+            try {
+                const saved = localStorage.getItem('fw_cart');
+                if (saved) cart = JSON.parse(saved);
+            } catch(e) {
+                cart = [];
+            }
+
+            let discountPct = 0;
+
+            function renderCheckoutReview() {
+                const $miniList = $('#checkoutMiniItems');
+                $miniList.empty();
+
+                let subtotal = 0;
+                let totalItems = 0;
+
+                if (!cart || cart.length === 0) {
+                    $miniList.html('<p style="font-size:0.875rem; color:var(--text-muted);">No items in bag.</p>');
+                    $('#checkoutSubtotal').html('&euro;0');
+                    $('#checkoutShipping').html('&euro;0');
+                    $('#checkoutTax').html('&euro;0');
+                    $('#checkoutGrandTotal').html('&euro;0');
+                    $('#checkoutSubmitTotal').html('&euro;0');
+                    return;
+                }
+
+                cart.forEach(item => {
+                    const qty = item.quantity || 1;
+                    const itemTotal = item.price * qty;
+                    subtotal += itemTotal;
+                    totalItems += qty;
+
+                    $miniList.append(`
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <img src="${item.img}" alt="${item.name}" style="width:48px; height:48px; object-fit:cover; border-radius:var(--radius-sm); background:var(--bg-cream);">
+                            <div style="flex:1;">
+                                <div style="font-weight:700; font-size:0.875rem; color:var(--text-dark);">${item.name}</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">&euro;${item.price.toLocaleString()} &times; ${qty}</div>
+                            </div>
+                            <div style="font-weight:700; font-size:0.875rem;">&euro;${itemTotal.toLocaleString()}</div>
+                        </div>
+                    `);
+                });
+
+                $('#checkoutSummaryCount').text(`${totalItems} ${totalItems === 1 ? 'specimen' : 'specimens'}`);
+
+                let discountVal = 0;
+                if (discountPct > 0) {
+                    discountVal = Math.round(subtotal * discountPct);
+                    $('#promoRow').show();
+                    $('#promoAmount').html(`-&euro;${discountVal.toLocaleString()}`);
+                } else {
+                    $('#promoRow').hide();
+                }
+
+                const shipping = subtotal >= 1500 ? 0 : 120;
+                const grandTotal = (subtotal - discountVal) + shipping;
+                const taxVal = Math.round(grandTotal * 0.20);
+
+                $('#checkoutSubtotal').html(`&euro;${subtotal.toLocaleString()}`);
+                $('#checkoutShipping').html(shipping === 0 ? '<span style="color:var(--accent-sage); font-weight:700;">Complimentary</span>' : `&euro;${shipping}`);
+                $('#checkoutTax').html(`&euro;${taxVal.toLocaleString()}`);
+                $('#checkoutGrandTotal').html(`&euro;${grandTotal.toLocaleString()}`);
+                $('#checkoutSubmitTotal').html(`&euro;${grandTotal.toLocaleString()}`);
+            }
+
+            renderCheckoutReview();
+
+            // Promo code handler
+            $('#applyPromoBtn').on('click', function() {
+                const code = $('#promoCodeInput').val().trim().toUpperCase();
+                if (code === 'ATELIER10' || code === 'ARCHITECT' || code === 'VERDE') {
+                    discountPct = 0.10;
+                    alert('Promo code applied: 10% Trade Discount.');
+                    renderCheckoutReview();
+                } else {
+                    alert('Invalid code. Try "ATELIER10" for 10% atelier trade discount.');
+                }
+            });
+
+            // Payment tabs
+            $('.payment-tab-btn').on('click', function() {
+                $('.payment-tab-btn').removeClass('active');
+                $(this).addClass('active');
+                const mode = $(this).data('pay');
+
+                if (mode === 'wire') {
+                    $('#cardFieldsContainer').hide();
+                    $('#wireNoticeContainer').show();
+                } else {
+                    $('#cardFieldsContainer').show();
+                    $('#wireNoticeContainer').hide();
+                }
+            });
+
+            // Submit order
+            $('#checkoutMainForm').on('submit', function(e) {
+                e.preventDefault();
+                const randomOrder = 'FW-2026-' + Math.floor(1000 + Math.random() * 9000);
+                $('#confirmedOrderId').text(randomOrder);
+
+                // Clear bag
+                localStorage.removeItem('fw_cart');
+                $('#orderSuccessModal').addClass('active');
+            });
+
+            $('#orderSuccessReturnBtn').on('click', function() {
+                window.location.href = 'shop.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
